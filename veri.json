@@ -1,16 +1,6 @@
 {
  "news": [
   {
-   "id": 1786345408122,
-   "title": "deneme haber",
-   "date": "08 ağustos 2026",
-   "desc": "deneme haber bu ",
-   "url": "https://x.com/gemiissendika",
-   "img": "",
-   "e": "🚛",
-   "c": "nc1"
-  },
-  {
    "id": 9,
    "date": "4 Temmuz 2026",
    "title": "41. Olağan Genel Kurulumuz Gerçekleştirildi",
@@ -286,5 +276,5 @@
    "img": ""
   }
  ],
- "published": "2026-08-10T12:15:43.294Z"
+ "published": "2026-08-10T12:40:21.530Z"
 }
