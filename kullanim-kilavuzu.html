@@ -43,11 +43,11 @@ td{padding:11px 14px;border-bottom:1px solid #DDE4EE;vertical-align:top}
     <h2><span class="no">1</span> Yönetim Paneline Giriş</h2>
     <p>Panele girmenin üç yolu vardır — hangisi kolayınıza gelirse:</p>
     <ol>
-      <li>Sitenin en altına inin, telif satırının altındaki soluk <strong>"⚙ Yönetim"</strong> yazısına tıklayın <em>(fareyle üzerine gelince belirginleşir)</em>.</li>
-      <li>Klavyeden <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd> tuşlarına birlikte basın.</li>
-      <li>Adres çubuğundaki adresin sonuna <strong>#admin</strong> yazıp Enter'a basın.</li>
+      <li><strong>🖱️ Gizli tıklama:</strong> Sol üstteki sendika logosuna <strong>arka arkaya 5 kez hızlıca</strong> tıklayın <em>(telefonda da çalışır — ziyaretçiler bilmez)</em>.</li>
+      <li><strong>⌨️ Kısayol:</strong> Klavyeden <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>A</kbd>.</li>
+      <li><strong>🔗 Adres:</strong> Adres çubuğundaki adresin sonuna <strong>#admin</strong> yazıp Enter'a basın.</li>
     </ol>
-    <p>Şifre: <strong>admin2024</strong> — İlk girişten sonra <strong>Ayarlar → Şifre Değiştir</strong> bölümünden mutlaka değiştirin.</p>
+    <p>Şifre: <strong>admin2024</strong> — Güvenlik: sitede görünür bir yönetim düğmesi yoktur; 5 kez yanlış şifre girilirse sistem 30 saniye kilitlenir. İlk girişten sonra <strong>Ayarlar → Şifre Değiştir</strong> bölümünden mutlaka değiştirin.</p>
 
     <h2><span class="no">2</span> Haber Ekleme</h2>
     <ol>
@@ -59,7 +59,7 @@ td{padding:11px 14px;border-bottom:1px solid #DDE4EE;vertical-align:top}
           <li><strong>Tarih</strong> — örn: "15 Ağustos 2026" <em>(boş bırakırsanız bugünün tarihi yazılır)</em></li>
           <li><strong>Açıklama</strong> — 1-2 cümle özet</li>
           <li><strong>Haber URL</strong> — tıklayınca gidilecek adres (X paylaşımınızın linki olabilir)</li>
-          <li><strong>Haber Görseli URL</strong> — fotoğraf linki <em>(boşsa renkli kart + ikon görünür)</em></li>
+          <li><strong>Haber Görseli</strong> — <strong>"📁 Bilgisayardan Seç"</strong> ile fotoğraf yükleyin veya link yapıştırın <em>(boşsa renkli kart + ikon)</em></li>
           <li><strong>İkon ve Renk</strong> — görsel yoksa kartın görünümü</li>
         </ul>
       </li>
@@ -74,10 +74,10 @@ td{padding:11px 14px;border-bottom:1px solid #DDE4EE;vertical-align:top}
     <ol>
       <li>Panelde <strong>🖼️ Galeri</strong>'ye girin.</li>
       <li><strong>Başlık</strong> yazın (örn: "1 Mayıs Edirne Yürüyüşü"), <strong>Tarih</strong> girin.</li>
-      <li><strong>Fotoğraf URL</strong> kutusuna fotoğrafın internet adresini yapıştırın.</li>
+      <li><strong>📁 Seç</strong> butonuyla bilgisayarınızdan fotoğrafı seçin <em>(otomatik küçültülür)</em> — ya da bir internet adresi yapıştırın.</li>
       <li><span class="btn-ex">+ Galeriye Ekle</span>'ye basın. Silmek için listedeki 🗑️.</li>
     </ol>
-    <div class="tip"><strong>💡 Fotoğraf URL'si nereden bulunur?</strong> Fotoğraf bir internet adresinde olmalı (örn. mevcut siteniz dokgemiissendikasi.com'a yüklenmiş bir görselin linki, ya da X/Instagram paylaşımındaki görselin adresi: görsele sağ tık → "Resim adresini kopyala"). <strong>En kolayı:</strong> fotoğrafları bana (Claude'a) gönderin — sıkıştırıp dosyanın içine kalıcı gömeyim; internet olmasa bile görünürler. Başkan'ın fotoğrafları böyle eklendi.</div>
+    <div class="tip"><strong>💡 Yeni:</strong> Fotoğrafları artık <strong>doğrudan bilgisayarınızdan</strong> seçebilirsiniz — sistem otomatik küçültüp kaydeder. Sitenin internetteki haline kalıcı gömülmesi için toplu güncellemede JSON yedeğinizi bana gönderin, dosyaya işleyeyim.</div>
 
     <h2><span class="no">4</span> Duyuru Pop-up'ı</h2>
     <p><strong>📢 Duyuru</strong> bölümünden başlık + mesaj yazıp <strong>"Duyuru aktif"</strong> kutusunu işaretleyin ve kaydedin. Siteyi açan her ziyaretçi duyuruyu bir kez görür. <strong>👁 Önizle</strong> ile yayınlamadan kontrol edebilirsiniz. Kaldırmak için işareti kaldırıp tekrar kaydedin.</p>
@@ -85,7 +85,7 @@ td{padding:11px 14px;border-bottom:1px solid #DDE4EE;vertical-align:top}
     <h2><span class="no">5</span> İletişim, WhatsApp ve Kadro Fotoğrafları</h2>
     <ul>
       <li><strong>📞 İletişim:</strong> Telefon, adres, e-posta ve çalışma saatlerini buradan güncelleyin. <strong>WhatsApp Hattı</strong> kutusuna numarayı <em>905XXXXXXXXX</em> biçiminde yazarsanız sitenin sol altında yeşil WhatsApp düğmesi belirir.</li>
-      <li><strong>👥 Yönetim Kadrosu:</strong> Her yöneticinin karşısına fotoğraf linki yapıştırıp <span class="btn-ex">💾 Tümünü Kaydet</span> deyin. Fotoğrafı olmayanlarda baş harfli kurumsal kart görünür.</li>
+      <li><strong>👥 Yönetim Kadrosu (tam yönetim):</strong> Artık her satırda <strong>isim, görev ve birim</strong> düzenlenebilir; yazıp <span class="btn-ex">💾 Tümünü Kaydet</span> deyin. <strong>"+ Kişi Ekle"</strong> ile yeni yönetici ekleyin (birimini üstteki listeden seçin), satır sonundaki <strong>▲▼</strong> ile aynı birim içinde sırasını değiştirin, <strong>✕</strong> ile silin — bu üçü anında kaydedilir. Fotoğraf: "Foto" düğmesiyle bilgisayardan seçin veya link yapıştırın; gömülü fotoğraflar isim değişikliğinde otomatik korunur. Fotoğrafı olmayanlarda sendika logosu görünür.</li>
     </ul>
 
     <h2><span class="no">6</span> Yedekleme ve Sitenin Güncellenmesi (ÖNEMLİ)</h2>
@@ -95,7 +95,8 @@ td{padding:11px 14px;border-bottom:1px solid #DDE4EE;vertical-align:top}
       <tr><th>İşlem</th><th>Nasıl Yapılır</th></tr>
       <tr><td><strong>Değişiklikleri yedekle</strong></td><td>Panel → 💾 Yedek &amp; Aktarım → <span class="btn-ex2">⬇️ Veriyi İndir (JSON)</span> → bilgisayarınıza bir dosya iner.</td></tr>
       <tr><td><strong>Başka bilgisayara taşı</strong></td><td>O bilgisayarda panele girin → <span class="btn-ex2">⬆️ Veri Yükle (JSON)</span> → indirdiğiniz dosyayı seçin.</td></tr>
-      <tr><td><strong>İnternetteki siteyi güncelle</strong></td><td>İndirdiğiniz JSON dosyasını bana (Claude'a) gönderin → içerikleri dosyaya kalıcı işleyip size güncel <em>dokgemiis-FINAL.html</em> vereyim → hosting'e bu dosyayı yükleyin.</td></tr>
+      <tr><td><strong>🌍 İnternetteki siteyi güncelle (YENİ — tek tık!)</strong></td><td>Panelin sağ üstündeki <span class="btn-ex">🌍 Canlıya Yayınla</span> butonu. İlk kullanımdan önce bir kez: <strong>Ayarlar → Canlı Yayın Bağlantısı</strong> bölümüne GitHub kullanıcı adı, depo adı ve erişim anahtarını girin (anahtar alma adımları panelde yazıyor). Sonrası: değişiklik yap → Yayınla → 1-2 dakikada herkes görür.</td></tr>
+      <tr><td><strong>Alternatif: Claude ile güncelleme</strong></td><td>JSON yedeğini bana gönderin, dosyaya kalıcı işleyeyim (büyük yapısal değişikliklerde önerilir).</td></tr>
     </table>
     <div class="ok"><strong>✅ Özet:</strong> Gündelik haber/duyuru girişini panelden rahatça yapın. Arada bir JSON yedeği indirin. Siteyi internete taşırken veya büyük güncellemede JSON'u bana iletin, dosyaya işleyeyim.</div>
 
@@ -105,7 +106,7 @@ td{padding:11px 14px;border-bottom:1px solid #DDE4EE;vertical-align:top}
       <tr><td>Şifremi unuttum</td><td>Bana bildirin; dosyayı varsayılan şifreyle yeniden vereyim.</td></tr>
       <tr><td>Yanlışlıkla her şeyi sildim</td><td>Panel → Ayarlar → "Tüm Veriyi Sil" ile varsayılanlara dönebilir, sonra JSON yedeğinizi yükleyebilirsiniz.</td></tr>
       <tr><td>Haber sıralaması nasıl?</td><td>En son eklenen en üstte görünür; ana sayfa manşeti ilk haberdir.</td></tr>
-      <tr><td>Görseller neden link istiyor?</td><td>Site tek dosyadır, sunucusu yoktur. Kalıcı gömme için fotoğrafları bana gönderin.</td></tr>
+      <tr><td>Fotoğraf nasıl eklenir?</td><td>Artık "📁 Bilgisayardan Seç" ile doğrudan yükleyebilirsiniz — otomatik küçültülür. İnternetteki siteye kalıcı işlemek için yine JSON yedeğini bana gönderin.</td></tr>
     </table>
 
   </div>
