@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Kullanım Kılavuzu — Site Yönetim Paneli</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;font-size:17px;line-height:1.7;color:#1a2535;background:#F5F7FA;padding:32px 16px}
+.page{max-width:860px;margin:0 auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.08)}
+.head{background:linear-gradient(150deg,#0B1628,#0d2148);color:#fff;padding:40px 44px;border-bottom:4px solid #C8A020}
+.head h1{font-size:1.6rem;font-weight:800;margin-bottom:6px}
+.head p{color:rgba(255,255,255,.55);font-size:.95rem}
+.body{padding:40px 44px}
+h2{font-size:1.15rem;font-weight:800;color:#0B1628;margin:36px 0 14px;padding-bottom:8px;border-bottom:2px solid #DDE4EE;display:flex;align-items:center;gap:10px}
+h2:first-child{margin-top:0}
+h2 .no{width:32px;height:32px;border-radius:50%;background:#C72119;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+ol,ul{padding-left:24px;margin:10px 0}
+li{margin-bottom:9px}
+strong{color:#0B1628}
+.tip{background:#FFF8E6;border:1px solid #F0DFA8;border-left:4px solid #C8A020;border-radius:10px;padding:16px 18px;margin:16px 0;font-size:.92rem}
+.warn{background:#FDECEC;border:1px solid #F5C6C6;border-left:4px solid #C72119;border-radius:10px;padding:16px 18px;margin:16px 0;font-size:.92rem}
+.ok{background:#EAF7EF;border:1px solid #BFE5CC;border-left:4px solid #16a34a;border-radius:10px;padding:16px 18px;margin:16px 0;font-size:.92rem}
+kbd{background:#0B1628;color:#fff;border-radius:6px;padding:2px 9px;font-size:.85rem;font-family:inherit}
+.btn-ex{display:inline-block;background:#C72119;color:#fff;font-weight:700;font-size:.82rem;padding:6px 14px;border-radius:7px}
+.btn-ex2{display:inline-block;background:#F5F7FA;border:1px solid #DDE4EE;color:#1a2535;font-weight:700;font-size:.82rem;padding:6px 14px;border-radius:7px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.9rem}
+th{background:#0B1628;color:#fff;text-align:left;padding:10px 14px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+td{padding:11px 14px;border-bottom:1px solid #DDE4EE;vertical-align:top}
+.foot{background:#F5F7FA;border-top:1px solid #DDE4EE;padding:22px 44px;font-size:.8rem;color:#5a6b7a;text-align:center}
+@media print{body{background:#fff;padding:0}.page{box-shadow:none;border-radius:0}}
+@media(max-width:600px){.head,.body{padding:26px 22px}.foot{padding:16px 22px}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="head">
+    <h1>⚓ Site Yönetim Paneli — Kullanım Kılavuzu</h1>
+    <p>Türkiye Liman, Dok Gemi – İş Sendikası · dokgemiis-FINAL.html</p>
+  </div>
+  <div class="body">
+
+    <h2><span class="no">1</span> Yönetim Paneline Giriş</h2>
+    <p>Panele girmenin üç yolu vardır — hangisi kolayınıza gelirse:</p>
+    <ol>
+      <li>Sitenin en altına inin, telif satırının altındaki soluk <strong>"⚙ Yönetim"</strong> yazısına tıklayın <em>(fareyle üzerine gelince belirginleşir)</em>.</li>
+      <li>Klavyeden <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd> tuşlarına birlikte basın.</li>
+      <li>Adres çubuğundaki adresin sonuna <strong>#admin</strong> yazıp Enter'a basın.</li>
+    </ol>
+    <p>Şifre: <strong>admin2024</strong> — İlk girişten sonra <strong>Ayarlar → Şifre Değiştir</strong> bölümünden mutlaka değiştirin.</p>
+
+    <h2><span class="no">2</span> Haber Ekleme</h2>
+    <ol>
+      <li>Panelde sol menüden <strong>📰 Haberler</strong>'e tıklayın.</li>
+      <li>Sağ üstteki <span class="btn-ex">+ Yeni Haber</span> düğmesine basın.</li>
+      <li>Açılan pencerede doldurun:
+        <ul>
+          <li><strong>Başlık</strong> (zorunlu) — örn: "Tersan ile TİS Görüşmeleri Başladı"</li>
+          <li><strong>Tarih</strong> — örn: "15 Ağustos 2026" <em>(boş bırakırsanız bugünün tarihi yazılır)</em></li>
+          <li><strong>Açıklama</strong> — 1-2 cümle özet</li>
+          <li><strong>Haber URL</strong> — tıklayınca gidilecek adres (X paylaşımınızın linki olabilir)</li>
+          <li><strong>Haber Görseli URL</strong> — fotoğraf linki <em>(boşsa renkli kart + ikon görünür)</em></li>
+          <li><strong>İkon ve Renk</strong> — görsel yoksa kartın görünümü</li>
+        </ul>
+      </li>
+      <li><span class="btn-ex">💾 Kaydet</span>'e basın — haber anında sitenin ana sayfasında ve Haberler bölümünde belirir. 2026 tarihli haberlere otomatik <strong>"YENİ"</strong> rozeti eklenir.</li>
+    </ol>
+    <p><strong>Düzenlemek için:</strong> haber satırındaki ✏️ simgesine, <strong>silmek için</strong> 🗑️ simgesine tıklayın.</p>
+
+    <div class="warn"><strong>🗑️ "admin" başlıklı haberi silme:</strong> Deneme sırasında yanlışlıkla kaydedilmiş bu haber yalnızca sizin bilgisayarınızda görünür. Silmek için: <strong>Panel → Haberler</strong> → listede "admin" satırını bulun → <strong>🗑️</strong> → "Evet". Hepsi bu!</div>
+
+    <h2><span class="no">3</span> Galeri Nasıl Çalışır?</h2>
+    <p>Sitedeki <strong>Galeri</strong> sayfası etkinlik fotoğraflarınızı kart kart gösterir; ziyaretçi karta tıklayınca fotoğraf tam ekran açılır.</p>
+    <ol>
+      <li>Panelde <strong>🖼️ Galeri</strong>'ye girin.</li>
+      <li><strong>Başlık</strong> yazın (örn: "1 Mayıs Edirne Yürüyüşü"), <strong>Tarih</strong> girin.</li>
+      <li><strong>Fotoğraf URL</strong> kutusuna fotoğrafın internet adresini yapıştırın.</li>
+      <li><span class="btn-ex">+ Galeriye Ekle</span>'ye basın. Silmek için listedeki 🗑️.</li>
+    </ol>
+    <div class="tip"><strong>💡 Fotoğraf URL'si nereden bulunur?</strong> Fotoğraf bir internet adresinde olmalı (örn. mevcut siteniz dokgemiissendikasi.com'a yüklenmiş bir görselin linki, ya da X/Instagram paylaşımındaki görselin adresi: görsele sağ tık → "Resim adresini kopyala"). <strong>En kolayı:</strong> fotoğrafları bana (Claude'a) gönderin — sıkıştırıp dosyanın içine kalıcı gömeyim; internet olmasa bile görünürler. Başkan'ın fotoğrafları böyle eklendi.</div>
+
+    <h2><span class="no">4</span> Duyuru Pop-up'ı</h2>
+    <p><strong>📢 Duyuru</strong> bölümünden başlık + mesaj yazıp <strong>"Duyuru aktif"</strong> kutusunu işaretleyin ve kaydedin. Siteyi açan her ziyaretçi duyuruyu bir kez görür. <strong>👁 Önizle</strong> ile yayınlamadan kontrol edebilirsiniz. Kaldırmak için işareti kaldırıp tekrar kaydedin.</p>
+
+    <h2><span class="no">5</span> İletişim, WhatsApp ve Kadro Fotoğrafları</h2>
+    <ul>
+      <li><strong>📞 İletişim:</strong> Telefon, adres, e-posta ve çalışma saatlerini buradan güncelleyin. <strong>WhatsApp Hattı</strong> kutusuna numarayı <em>905XXXXXXXXX</em> biçiminde yazarsanız sitenin sol altında yeşil WhatsApp düğmesi belirir.</li>
+      <li><strong>👥 Yönetim Kadrosu:</strong> Her yöneticinin karşısına fotoğraf linki yapıştırıp <span class="btn-ex">💾 Tümünü Kaydet</span> deyin. Fotoğrafı olmayanlarda baş harfli kurumsal kart görünür.</li>
+    </ul>
+
+    <h2><span class="no">6</span> Yedekleme ve Sitenin Güncellenmesi (ÖNEMLİ)</h2>
+    <div class="warn"><strong>⚠️ Bilmeniz gereken tek teknik kural:</strong> Panelde yaptığınız değişiklikler <u>o an kullandığınız bilgisayarın tarayıcısında</u> saklanır ve orada anında görünür. Sitenin <u>internetteki halinde herkese</u> görünmesi için değişikliklerin dosyaya işlenmesi gerekir.</div>
+    <p><strong>Doğru çalışma düzeni şöyle:</strong></p>
+    <table>
+      <tr><th>İşlem</th><th>Nasıl Yapılır</th></tr>
+      <tr><td><strong>Değişiklikleri yedekle</strong></td><td>Panel → 💾 Yedek &amp; Aktarım → <span class="btn-ex2">⬇️ Veriyi İndir (JSON)</span> → bilgisayarınıza bir dosya iner.</td></tr>
+      <tr><td><strong>Başka bilgisayara taşı</strong></td><td>O bilgisayarda panele girin → <span class="btn-ex2">⬆️ Veri Yükle (JSON)</span> → indirdiğiniz dosyayı seçin.</td></tr>
+      <tr><td><strong>İnternetteki siteyi güncelle</strong></td><td>İndirdiğiniz JSON dosyasını bana (Claude'a) gönderin → içerikleri dosyaya kalıcı işleyip size güncel <em>dokgemiis-FINAL.html</em> vereyim → hosting'e bu dosyayı yükleyin.</td></tr>
+    </table>
+    <div class="ok"><strong>✅ Özet:</strong> Gündelik haber/duyuru girişini panelden rahatça yapın. Arada bir JSON yedeği indirin. Siteyi internete taşırken veya büyük güncellemede JSON'u bana iletin, dosyaya işleyeyim.</div>
+
+    <h2><span class="no">7</span> Sık Sorulanlar</h2>
+    <table>
+      <tr><th>Soru</th><th>Cevap</th></tr>
+      <tr><td>Şifremi unuttum</td><td>Bana bildirin; dosyayı varsayılan şifreyle yeniden vereyim.</td></tr>
+      <tr><td>Yanlışlıkla her şeyi sildim</td><td>Panel → Ayarlar → "Tüm Veriyi Sil" ile varsayılanlara dönebilir, sonra JSON yedeğinizi yükleyebilirsiniz.</td></tr>
+      <tr><td>Haber sıralaması nasıl?</td><td>En son eklenen en üstte görünür; ana sayfa manşeti ilk haberdir.</td></tr>
+      <tr><td>Görseller neden link istiyor?</td><td>Site tek dosyadır, sunucusu yoktur. Kalıcı gömme için fotoğrafları bana gönderin.</td></tr>
+    </table>
+
+  </div>
+  <div class="foot">Bu kılavuzu yazdırıp panonuza asabilirsiniz · Sorularınız için: bu sohbete yazmanız yeterli ⚓</div>
+</div>
+</body>
+</html>
