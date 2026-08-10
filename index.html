@@ -773,6 +773,51 @@ html,body{max-width:100%;overflow-x:hidden}
   #navLinks{visibility:hidden;transition:transform .34s cubic-bezier(.22,.9,.3,1),visibility 0s .34s}
   #navLinks.open{visibility:visible;transition:transform .34s cubic-bezier(.22,.9,.3,1),visibility 0s 0s}
 }
+
+/* ═══════════ ADMİN MOBİL v2 — panel telefonda tam kullanılabilir ═══════════ */
+@media(max-width:700px){
+  /* Üst bar: iki satıra akabilir, butonlar kompakt */
+  .a-topbar{height:auto;min-height:52px;flex-wrap:wrap;gap:8px;padding:10px 12px}
+  .a-topbar h2{font-size:.92rem;width:100%}
+  .a-topbar-right{width:100%;justify-content:flex-start;flex-wrap:wrap;gap:8px}
+  .a-topbar-right .abtn{flex:1;justify-content:center;font-size:.72rem;padding:9px 10px}
+  .a-preview-btn{flex:1;text-align:center;font-size:.72rem;padding:9px 10px}
+  /* İçerik + kartlar */
+  .a-content{padding:10px}
+  .a-card{margin-bottom:14px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .a-card-head{padding:12px 14px;position:sticky;left:0}
+  .a-card-head h3{font-size:.85rem}
+  /* Tablolar: yatay kaydır (kırılmasın) */
+  .a-card table{min-width:560px}
+  #kadro-tbody{min-width:0}
+  .a-card table:has(#kadro-tbody){min-width:760px}
+  .a-card th{font-size:.62rem;padding:9px 10px}
+  .a-card td{padding:9px 10px}
+  /* Kadro alanları */
+  .k-in{min-width:0;font-size:16px;padding:8px}
+  .k-sel{font-size:16px;padding:8px}
+  .kop{width:32px;height:32px}
+  /* Form satırları ve buton grupları sarabilsin */
+  .a-card div[style*="display:flex"]{flex-wrap:wrap}
+  .afg input,.afg textarea,.afg select{font-size:16px}
+  .export-btn{width:100%;justify-content:center}
+  /* Modal: tam ekrana yakın */
+  .modal-overlay{padding:10px;align-items:flex-end}
+  .modal{max-width:none;max-height:94vh;border-radius:16px 16px 0 0}
+  .modal-body{padding:16px 14px}
+  .modal-foot{position:sticky;bottom:0;background:var(--white);padding:12px 14px;flex-wrap:wrap}
+  .modal-foot .abtn{flex:1;justify-content:center}
+  /* Duyuru/GitHub kart butonları */
+  .abtn{font-size:.74rem}
+  /* Kaydet çubukları parmak dostu */
+  .abtn-sm{padding:9px 12px}
+}
+@media(max-width:420px){
+  .a-nav-item{padding:7px 9px;font-size:.56rem}
+  .a-nav-item span{font-size:1rem}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .a-card table{min-width:520px}
+}
 </style>
 </head>
 <body>
@@ -1246,6 +1291,59 @@ function showAdmin(){
 // ═══════════════════════════════════════════════
 // AUTH
 // ═══════════════════════════════════════════════
+// ── SHA-256 (saf JS, senkron; file:// dahil her ortamda) ──
+function sha256(ascii){
+  function rightRotate(v,a){return(v>>>a)|(v<<(32-a));}
+  var mathPow=Math.pow,maxWord=mathPow(2,32),result='',i,j,words=[],asciiBitLength=ascii.length*8;
+  var hash=sha256.h=sha256.h||[],k=sha256.k=sha256.k||[],primeCounter=k.length;
+  var isComposite={};
+  for(var candidate=2;primeCounter<64;candidate++){
+    if(!isComposite[candidate]){
+      for(i=0;i<313;i+=candidate)isComposite[i]=candidate;
+      hash[primeCounter]=(mathPow(candidate,.5)*maxWord)|0;
+      k[primeCounter++]=(mathPow(candidate,1/3)*maxWord)|0;
+    }
+  }
+  ascii+='\x80';
+  while(ascii.length%64-56)ascii+='\x00';
+  for(i=0;i<ascii.length;i++){
+    j=ascii.charCodeAt(i);
+    if(j>>8)return'';
+    words[i>>2]|=j<<((3-i)%4)*8;
+  }
+  words[words.length]=(asciiBitLength/maxWord)|0;
+  words[words.length]=asciiBitLength;
+  for(j=0;j<words.length;){
+    var w=words.slice(j,j+=16);
+    var oldHash=hash;
+    hash=hash.slice(0,8);
+    for(i=0;i<64;i++){
+      var w15=w[i-15],w2=w[i-2];
+      var a=hash[0],e=hash[4];
+      var temp1=hash[7]
+        +(rightRotate(e,6)^rightRotate(e,11)^rightRotate(e,25))
+        +((e&hash[5])^((~e)&hash[6]))
+        +k[i]
+        +(w[i]=(i<16)?w[i]:(w[i-16]
+          +(rightRotate(w15,7)^rightRotate(w15,18)^(w15>>>3))
+          +w[i-7]
+          +(rightRotate(w2,17)^rightRotate(w2,19)^(w2>>>10)))|0);
+      var temp2=(rightRotate(a,2)^rightRotate(a,13)^rightRotate(a,22))
+        +((a&hash[1])^(a&hash[2])^(hash[1]&hash[2]));
+      hash=[(temp1+temp2)|0].concat(hash);
+      hash[4]=(hash[4]+temp1)|0;
+    }
+    for(i=0;i<8;i++)hash[i]=(hash[i]+oldHash[i])|0;
+  }
+  for(i=0;i<8;i++){
+    for(j=3;j+1;j--){
+      var b=(hash[i]>>(j*8))&255;
+      result+=((b<16)?0:'')+b.toString(16);
+    }
+  }
+  return result;
+}
+var PW_HASH='d495f8ec0ebb618ecd52c0d4258f0c0196beca7b8c0519442bc45beb6d092827';
 var _brandTaps=0,_brandT=0,_pwFails=0,_pwLockUntil=0;
 function brandTap(){
   var now=Date.now();
@@ -1260,8 +1358,9 @@ function doLogin(){
     return;
   }
   const pw=document.getElementById('pw-input').value;
-  const stored=LS.getItem(K.pw)||'admin2024';
-  if(pw===stored){
+  const ov=LS.getItem(K.pw);                          // bu tarayıcıda değiştirilmiş şifre
+  const ok = ov ? (pw===ov) : (sha256(pw)===PW_HASH); // yoksa: kurulum şifresi (yalnızca özeti gömülü)
+  if(ok){
     document.getElementById('pw-input').value='';
     document.getElementById('login-err').style.display='none';
     showAdmin();
@@ -1857,7 +1956,9 @@ function importData(inp){
 }
 function changePw(){
   const o=document.getElementById('pw-old').value,n=document.getElementById('pw-new').value,n2=document.getElementById('pw-new2').value;
-  if(o!==(LS.getItem(K.pw)||'admin2024')){toast('Mevcut şifre hatalı','err');return;}
+  var ovp=LS.getItem(K.pw);
+  var okCur = ovp ? (o===ovp) : (sha256(o)===PW_HASH);
+  if(!okCur){toast('Mevcut şifre hatalı','err');return;}
   if(n.length<4){toast('En az 4 karakter olmalı','err');return;}
   if(n!==n2){toast('Şifreler eşleşmiyor','err');return;}
   LS.setItem(K.pw,n);
@@ -2399,11 +2500,11 @@ function revealInit(){
 
 // ── Şifre sıfırlama (kilitlenme kurtarması) ──
 function resetPw(){
-  if(!confirm('Şifre varsayılan değerine (admin2024) sıfırlansın mı?\n\nNot: Bu işlem yalnızca bu tarayıcıyı etkiler; sitenizin diğer ziyaretçileri etkilenmez.'))return;
+  if(!confirm('Şifre, kurulum şifresine sıfırlansın mı?\n\nNot: Bu işlem yalnızca bu tarayıcıyı etkiler.'))return;
   LS.removeItem(K.pw);
   var err=document.getElementById('login-err'); if(err)err.style.display='none';
   var pi=document.getElementById('pw-input'); if(pi){pi.value='';pi.focus();}
-  alert('✅ Şifre sıfırlandı.\nYeni şifre: admin2024');
+  alert('Şifre, kurulum şifresine döndürüldü.\n(Kurulum şifresi kullanım kılavuzunuzda yazılıdır.)');
 }
 
 // ═══════════════════════════════════════════════
