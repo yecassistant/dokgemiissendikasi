@@ -913,7 +913,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 /* ═══ AKILLI BAŞLIK + İLERLEME + Aa ═══ */
 header{transition:transform .3s cubic-bezier(.4,.2,.2,1),box-shadow .3s}
-header.hdr-hide{transform:translateY(calc(-1 * var(--topbarh)))}
+header.hdr-hide{transform:translateY(-102%);box-shadow:none!important}
 header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
 #scroll-progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--red);
   transform:scaleX(0);transform-origin:left;z-index:905;pointer-events:none;transition:transform .08s linear}
@@ -1030,7 +1030,7 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
     <div class="login-err" id="login-err">Şifre hatalı. Lütfen tekrar deneyin.</div>
     <button class="pw-reset" onclick="resetPw()">Şifremi unuttum — varsayılana sıfırla</button>
     <button class="back-btn" onclick="showSite()" style="display:block;margin:10px auto 0">← Siteye Dön</button>
-    <div class="login-ver">Sürüm 2.2 · Ağustos 2026</div>
+    <div class="login-ver">Sürüm 2.4 · Ağustos 2026</div>
   </div>
 </div>
 
@@ -2247,27 +2247,35 @@ function doSearch(){
 
 // ── YUKARI ÇIK ──
 function initExtras(){
-  var _lastY = 0, _hdr = document.querySelector('header');
+  var _lastY = 0, _ticking = false;
+  var _hdr = document.querySelector('header');
+  var _navEl = document.getElementById('navLinks');
+  var _btEl = document.getElementById('backtop');
+  var _spEl = document.getElementById('scroll-progress');
+  function _onScroll(){
+    _ticking = false;
+    try{
+      var y = window.scrollY || window.pageYOffset || 0;
+      if(_btEl) _btEl.classList.toggle('show', y > 400);
+      if(_hdr){
+        var navOpen = _navEl && _navEl.classList.contains('open');
+        var goingUp = y < _lastY - 1;
+        var goingDown = y > _lastY + 14;
+        if(navOpen || y < 70 || goingUp){ _hdr.classList.remove('hdr-hide'); }
+        else if(goingDown){ _hdr.classList.add('hdr-hide'); }
+        _hdr.classList.toggle('hdr-float', y > 12);
+      }
+      if(_spEl){
+        var h = (document.documentElement.scrollHeight || 0) - (window.innerHeight || 0);
+        _spEl.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, y / h) : 0) + ')';
+      }
+      _lastY = y;
+    }catch(e){}
+  }
   window.addEventListener('scroll', function(){
-    const y = window.scrollY;
-    const bt = document.getElementById('backtop');
-    if(bt) bt.classList.toggle('show', y > 400);
-    // Akıllı başlık: aşağıda gizlen, hafif yukarıda ANINDA geri gel
-    if(_hdr){
-      const navOpen = document.getElementById('navLinks').classList.contains('open');
-      if(navOpen || y < 70){ _hdr.classList.remove('hdr-hide'); }
-      else if(y < _lastY){ _hdr.classList.remove('hdr-hide'); }      // her yukarı hareket → üst satır geri
-      else if(y > _lastY + 14){ _hdr.classList.add('hdr-hide'); }   // sakin gizlenme
-      _hdr.classList.toggle('hdr-float', y > 12);
-    }
-    // Okuma ilerleme çubuğu
-    const sp = document.getElementById('scroll-progress');
-    if(sp){
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      sp.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, y / h) : 0) + ')';
-    }
-    _lastY = y;
+    if(!_ticking){ _ticking = true; (window.requestAnimationFrame || setTimeout)(_onScroll); }
   }, {passive:true});
+  _onScroll();
   document.addEventListener('keydown', function(e){
     if(e.key==='Escape'){closeSearch();closeAnnounce();closeLightbox();closeNav();}
     if(e.key==='/' && !e.ctrlKey && !e.altKey){
@@ -2824,7 +2832,7 @@ var _al=document.getElementById('a-logo'); if(_al) _al.src=LOGOIMG;
 var _ml=document.getElementById('mnav-logo'); if(_ml) _ml.src=LOGOIMG;
 var _ll=document.getElementById('login-logo-img'); if(_ll) _ll.src=LOGOIMG;
 try{document.documentElement.style.fontSize='';LS.removeItem('dg_fs');}catch(e){}
-try{console.log('%cDok Gemi-İş · Sürüm 2.2','color:#C72119;font-weight:bold');}catch(e){}
+try{console.log('%cDok Gemi-İş · Sürüm 2.4','color:#C72119;font-weight:bold');}catch(e){}
 function boot(){
   if(location.hash==='#admin'){ showLogin(); } else { showSite(); }
   initExtras();
