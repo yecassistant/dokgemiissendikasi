@@ -1030,7 +1030,7 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
     <div class="login-err" id="login-err">Şifre hatalı. Lütfen tekrar deneyin.</div>
     <button class="pw-reset" onclick="resetPw()">Şifremi unuttum — varsayılana sıfırla</button>
     <button class="back-btn" onclick="showSite()" style="display:block;margin:10px auto 0">← Siteye Dön</button>
-    <div class="login-ver">Sürüm 2.4 · Ağustos 2026</div>
+    <div class="login-ver">Sürüm 2.5 · Ağustos 2026</div>
   </div>
 </div>
 
@@ -2812,6 +2812,28 @@ function publishLive(){
     .catch(function(){toast('❌ İnternet yok veya bağlantı engellendi','err');});
 }
 // ── Site açılışında canlı veriyi çek ──
+// ── Canlı veri göçü: eski yayınlanmış veri.json'u belleğe alırken güncelle ──
+var TM_MAP={4:['İsmail ÖZGÜR','Harun ŞEN'],5:['Hasan YILMAZ','Uğur Bayram TAN'],6:['Uğur Bayram TAN','Birol TORAMAN'],7:['Cengiz YAVUZ','Mertgün ACAR'],8:['Mertgün ACAR','Ziya ÇALIK'],9:['Bülent GENCER','Halil YETİM'],11:['Selahattin SADİOĞLU','Taner ZAİM'],12:['Savaş YEŞİLDAL','Gökhan BOSTAN'],13:['Ramazan BODUR','Abdullah TÜRE'],14:['Gökmen YILMAZ','Erkan ÖZBUĞANLI']};
+function normalizeLive(L){
+  try{
+    if(L.team && L.team.forEach){
+      L.team.forEach(function(p){var m=TM_MAP[p.id]; if(m && p.name===m[0]) p.name=m[1];});
+    }
+    if(L.contact){
+      if(!L.contact.wa || L.contact.wa==='905415762614') L.contact.wa='905363321463';
+    }
+    if(L.news && L.news.some && !L.news.some(function(n){return n.id===9;})){
+      var gk = D_NEWS.filter(function(n){return n.id===9;})[0];
+      if(gk) L.news.unshift(gk);
+    }
+    if(L.gallery && L.gallery.some && !L.gallery.some(function(g){return g.id===7;})){
+      var gg = D_GALLERY.filter(function(g){return g.id===7;})[0];
+      if(gg) L.gallery.unshift(gg);
+    }
+    if(L.social && L.social.fb==='https://www.facebook.com/dokgemiis'){ L.social.fb='https://www.facebook.com/gemiissendika'; }
+  }catch(e){}
+  return L;
+}
 function loadLive(done){
   var finished=false;
   function fin(){ if(!finished){finished=true;done();} }
@@ -2820,7 +2842,7 @@ function loadLive(done){
     var t=setTimeout(fin,1200); // ağ yavaşsa bekletme
     fetch('veri.json?nocache='+Date.now(),{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
-      .then(function(d){ if(d&&typeof d==='object'){LIVE=d;} clearTimeout(t); fin(); })
+      .then(function(d){ if(d&&typeof d==='object'){LIVE=normalizeLive(d);} clearTimeout(t); fin(); })
       .catch(function(){clearTimeout(t);fin();});
   }catch(e){fin();}
 }
@@ -2832,7 +2854,7 @@ var _al=document.getElementById('a-logo'); if(_al) _al.src=LOGOIMG;
 var _ml=document.getElementById('mnav-logo'); if(_ml) _ml.src=LOGOIMG;
 var _ll=document.getElementById('login-logo-img'); if(_ll) _ll.src=LOGOIMG;
 try{document.documentElement.style.fontSize='';LS.removeItem('dg_fs');}catch(e){}
-try{console.log('%cDok Gemi-İş · Sürüm 2.4','color:#C72119;font-weight:bold');}catch(e){}
+try{console.log('%cDok Gemi-İş · Sürüm 2.5','color:#C72119;font-weight:bold');}catch(e){}
 function boot(){
   if(location.hash==='#admin'){ showLogin(); } else { showSite(); }
   initExtras();
