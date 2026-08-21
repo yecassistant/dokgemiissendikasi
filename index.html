@@ -628,9 +628,25 @@ tr:hover td{background:#fafbfc}
 }
 
 /* ── WHATSAPP ── */
-#wabtn{position:fixed;left:16px;bottom:16px;z-index:950;width:54px;height:54px;border-radius:50%;background:#25D366;display:none;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:transform .2s}
-#wabtn:hover{transform:scale(1.08)}
-#wabtn svg{width:30px;height:30px;fill:#fff}
+#wabtn{position:fixed;left:16px;bottom:16px;z-index:950;display:none;align-items:center;gap:11px;
+  padding:10px 18px 10px 12px;border-radius:999px;
+  background:linear-gradient(135deg,#2BB95C,#1FA855);color:#fff;text-decoration:none;
+  box-shadow:0 10px 28px rgba(31,168,85,.45),inset 0 1px 0 rgba(255,255,255,.25);
+  transition:transform .2s,box-shadow .2s}
+#wabtn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 14px 34px rgba(31,168,85,.55)}
+#wabtn svg{width:26px;height:26px;fill:#fff;flex-shrink:0;position:relative;z-index:1}
+.wa-txt{display:flex;flex-direction:column;line-height:1.15;position:relative;z-index:1}
+.wa-txt b{font-size:.82rem;font-weight:800;letter-spacing:.01em}
+.wa-txt small{font-size:.68rem;opacity:.9;font-weight:600}
+.wa-ring{position:absolute;left:12px;top:50%;width:26px;height:26px;margin-top:-13px;border-radius:50%;background:rgba(255,255,255,.35);animation:waPulse 2.2s ease-out infinite;pointer-events:none}
+@keyframes waPulse{0%{transform:scale(.9);opacity:.7}70%{transform:scale(2.1);opacity:0}100%{opacity:0}}
+@media(max-width:800px){
+  #wabtn{left:12px;bottom:max(14px,env(safe-area-inset-bottom));padding:10px 16px 10px 11px}
+  #wabtn svg{width:24px;height:24px}
+  .wa-txt b{font-size:.78rem}
+  .wa-txt small{font-size:.64rem}
+}
+@media(prefers-reduced-motion:reduce){.wa-ring{animation:none;display:none}}
 /* ── SCROLL REVEAL ── */
 .rv{opacity:0;transform:translateY(12px);transition:opacity .45s ease,transform .45s ease}
 .rv.in{opacity:1;transform:none}
@@ -818,6 +834,90 @@ html,body{max-width:100%;overflow-x:hidden}
   .stat-grid{grid-template-columns:1fr 1fr}
   .a-card table{min-width:520px}
 }
+
+/* ═══════════ YÖNETİM SAYFASI TASARIM v2 ═══════════ */
+.pteam-lead{max-width:620px;margin:0 auto 14px;text-align:center;font-size:.98rem}
+.branch-head{display:flex;align-items:center;gap:18px;margin:46px 0 24px}
+.branch-head:first-of-type{margin-top:26px}
+.branch-head h3{font-size:.82rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);white-space:nowrap;display:flex;align-items:center;gap:10px}
+.branch-head h3::before{content:'';width:9px;height:9px;background:var(--red);border-radius:2px}
+.bh-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--border) 30%,var(--border) 70%,transparent)}
+.pteam-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,248px));gap:22px;justify-content:center}
+.pcard{border:1px solid var(--border);border-radius:16px;overflow:hidden;text-align:center;background:var(--white);transition:transform .22s,box-shadow .22s,border-color .22s}
+.pcard:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(11,22,40,.13);border-color:#c9d4e4}
+.pphoto{height:218px}
+.pphoto img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.pphoto .plogo{width:56%;max-width:104px;opacity:.96}
+.pinfo{padding:16px 12px 18px}
+.prole{font-size:.6rem;letter-spacing:.18em}
+.pname{font-size:.93rem}
+@media(max-width:800px){
+  .pteam-grid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;justify-content:stretch}
+  .pphoto{height:188px}
+  .branch-head{margin:36px 0 18px;gap:12px}
+  .branch-head h3{font-size:.72rem;letter-spacing:.16em}
+  .pteam-lead{font-size:.9rem}
+}
+@media(max-width:480px){
+  .pteam-grid{grid-template-columns:1fr 1fr;gap:11px}
+  .pphoto{height:158px}
+  .pphoto .plogo{max-width:74px}
+  .pinfo{padding:12px 8px 14px}
+  .prole{font-size:.54rem;letter-spacing:.12em}
+  .pname{font-size:.8rem}
+  .branch-head h3::before{width:7px;height:7px}
+}
+
+/* ═══ MOBİL DÖNÜŞÜM ÇUBUĞU + CİLA v5 ═══ */
+#mcta{display:none}
+.trust-strip{background:var(--ink);border-bottom:3px solid var(--red)}
+.trust-inner{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;padding:13px 5%}
+.trust-inner span{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.85);font-size:.76rem;font-weight:700;letter-spacing:.02em}
+.trust-inner svg{color:#E8564E}
+@media(max-width:800px){
+  #mcta{position:fixed;left:0;right:0;bottom:0;z-index:955;display:flex;gap:9px;
+    padding:9px 10px calc(9px + env(safe-area-inset-bottom));
+    background:rgba(255,255,255,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border-top:1px solid var(--border);box-shadow:0 -8px 28px rgba(11,22,40,.12)}
+  #mcta-wa{display:flex;align-items:center;justify-content:center;gap:8px;flex:0 0 auto;
+    padding:12px 16px;border-radius:12px;background:linear-gradient(135deg,#2BB95C,#1FA855);
+    color:#fff;font-size:.8rem;font-weight:800;text-decoration:none}
+  #mcta-join{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:9px 12px;border-radius:12px;background:var(--red);color:#fff;text-decoration:none;
+    font-size:.92rem;font-weight:800;line-height:1.15;box-shadow:0 6px 18px rgba(199,33,25,.35)}
+  #mcta-join small{font-size:.62rem;font-weight:600;opacity:.85}
+  #mcta-join:active{background:var(--red2)}
+  #wabtn{display:none!important}                     /* çubuk varken hap gizli */
+  #backtop{bottom:calc(74px + env(safe-area-inset-bottom))!important}
+  #nav-backdrop.open~#mcta{opacity:0;visibility:hidden;pointer-events:none}
+  #mcta{transition:opacity .25s,visibility .25s}
+  body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}  /* içerik çubuğun altında kalmasın */
+  .trust-inner{gap:8px 16px;padding:11px 4%}
+  .trust-inner span{font-size:.66rem}
+  /* Sayfa sayfa rötuşlar */
+  .tis-grid{grid-template-columns:1fr 1fr}
+  .contact-layout iframe{height:250px}
+  .form-card .btn{width:100%;justify-content:center}
+  .gal-grid{gap:10px}
+  .sec-lead{font-size:.92rem}
+}
+@media(max-width:480px){
+  .tis-grid{grid-template-columns:1fr}
+  .tis-card{padding:12px 14px}
+  .nf-item{padding:12px 0}
+  .page-hero-inner h1{font-size:1.55rem}
+  .uye-edev-btn,.btn-edev{width:100%;justify-content:center;font-size:.95rem;padding:15px}
+  .footer-grid{gap:26px}
+  .fcol ul a{padding:4px 0}
+}
+
+/* ═══ AKILLI BAŞLIK + İLERLEME + Aa ═══ */
+header{transition:transform .3s cubic-bezier(.4,.2,.2,1),box-shadow .3s}
+header.hdr-hide{transform:translateY(calc(-1 * var(--topbarh)))}
+header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
+#scroll-progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--red);
+  transform:scaleX(0);transform-origin:left;z-index:905;pointer-events:none;transition:transform .08s linear}
+@media(prefers-reduced-motion:reduce){header{transition:none}#scroll-progress{transition:none}}
 </style>
 </head>
 <body>
@@ -870,9 +970,14 @@ html,body{max-width:100%;overflow-x:hidden}
       <div class="burger" id="burger" onclick="toggleNav()"><span></span><span></span><span></span></div>
     </nav>
   </header>
+  <div id="scroll-progress"></div>
   <div id="nav-backdrop" onclick="closeNav()"></div>
   <div id="sapp" class="sapp"></div>
-  <a id="wabtn" href="#" target="_blank" rel="noopener" title="WhatsApp Destek Hattı" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  <a id="wabtn" href="#" target="_blank" rel="noopener" title="WhatsApp Destek Hattı" aria-label="WhatsApp"><span class="wa-ring"></span><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="wa-txt"><b>WhatsApp</b><small id="wa-num"></small></span></a>
+  <div id="mcta" aria-label="Hızlı işlemler">
+    <a id="mcta-wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp ile yazın"><svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/><path d="M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0012.05 0m0 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg><span>WhatsApp</span></a>
+    <a id="mcta-join" href="#" onclick="return sGo('uye')">Hemen Üye Ol<small>e-Devlet ile 2 dakikada</small></a>
+  </div>
   <button id="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Yukarı Çık" aria-label="Yukarı Çık">↑</button>
   <footer>
     <div class="wrap">
@@ -1246,7 +1351,7 @@ const D_NEWS = [
   {id:7,date:'27 Mart 2025',title:'Omsan Lojistik ile 2. Dönem TİS İmzalandı',e:'📝',c:'nc1',url:'https://dokgemiissendikasi.com/',desc:'Omsan Lojistik İşyeri ile 2. dönem Toplu İş Sözleşmesi başarıyla imzalandı.'},
   {id:8,date:'3 Şubat 2025',title:'Sirena Marine\'de Toplu İş Sözleşmesi İmzalandı!',e:'⚓',c:'nc2',url:'https://dokgemiissendikasi.com/',desc:'5 ay süren görüşmelerin sonunda üyelerimizi memnun eden sözleşme imzalandı. Biz birlikte güçlüyüz!'},
 ];
-const D_CONTACT = {tel1:'+90 (216) 369 73 90',tel2:'+90 (216) 369 73 91',email:'info@dokgemiissendikasi.com',addr1:'Merdivenköy Mah. Dikyol Sk. No:2/B',addr2:'İç Kapı 164–167, Business İstanbul',addr3:'Kadıköy / İstanbul',h1:'Pazartesi – Cuma: 08:30 – 17:30',h2:'Cumartesi: 09:00 – 13:00',web:'https://dokgemiissendikasi.com',edev:'https://www.turkiye.gov.tr/csgb-isci-sendikalari-uyelik-islemleri',wa:'905415762614'};
+const D_CONTACT = {tel1:'+90 (216) 369 73 90',tel2:'+90 (216) 369 73 91',email:'info@dokgemiissendikasi.com',addr1:'Merdivenköy Mah. Dikyol Sk. No:2/B',addr2:'İç Kapı 164–167, Business İstanbul',addr3:'Kadıköy / İstanbul',h1:'Pazartesi – Cuma: 08:30 – 17:30',h2:'Cumartesi: 09:00 – 13:00',web:'https://dokgemiissendikasi.com',edev:'https://www.turkiye.gov.tr/csgb-isci-sendikalari-uyelik-islemleri',wa:'905363321463'};
 const D_SOCIAL = {ig:'https://www.instagram.com/gemiissendika/',tw:'https://x.com/gemiissendika',fb:'https://www.facebook.com/gemiissendika'};
 
 function gd(k,def){try{const v=LS.getItem(k);return v?JSON.parse(v):def;}catch{return def;}}
@@ -1689,6 +1794,12 @@ const SPAGES = {
   uye(){
     const C=CONTACT();
     return `<div class="page-hero"><div class="page-hero-inner"><div class="sec-label">Üyelik</div><h1>1 Dakikada Üye Olun</h1></div></div>
+    <div class="trust-strip"><div class="wrap trust-inner">
+      <span>${svi('flag',18)} 1946'dan Beri</span>
+      <span>${svi('hand',18)} 49+ İşyerinde TİS</span>
+      <span>${svi('scroll',18)} Türk-İş &amp; IndustriALL Üyesi</span>
+      <span>${svi('lock',18)} e-Devlet Güvencesi</span>
+    </div></div>
     <div class="membership"><div class="wrap">
       <div style="max-width:600px;margin-bottom:48px"><div class="sec-label">e-Devlet ile Kolay Üyelik</div><div class="sec-title" style="color:#fff">Üye Olmak Artık Çok Kolay</div><p class="sec-lead">Kâğıt, form, ıslak imza yok. e-Devlet şifrenizle dakikalar içinde üye olabilirsiniz. İşvereniniz haberdar <strong style="color:#fff">edilmez</strong>. Tamamen <strong style="color:#fff">ücretsizdir</strong>.</p></div>
       <div class="uye-layout">
@@ -2136,12 +2247,35 @@ function doSearch(){
 
 // ── YUKARI ÇIK ──
 function initExtras(){
+  var _lastY = 0, _hdr = document.querySelector('header');
   window.addEventListener('scroll', function(){
+    const y = window.scrollY;
     const bt = document.getElementById('backtop');
-    if(bt) bt.classList.toggle('show', window.scrollY > 400);
-  });
+    if(bt) bt.classList.toggle('show', y > 400);
+    // Akıllı başlık: aşağıda gizlen, hafif yukarıda ANINDA geri gel
+    if(_hdr){
+      const navOpen = document.getElementById('navLinks').classList.contains('open');
+      if(navOpen || y < 70){ _hdr.classList.remove('hdr-hide'); }
+      else if(y < _lastY){ _hdr.classList.remove('hdr-hide'); }      // her yukarı hareket → üst satır geri
+      else if(y > _lastY + 14){ _hdr.classList.add('hdr-hide'); }   // sakin gizlenme
+      _hdr.classList.toggle('hdr-float', y > 12);
+    }
+    // Okuma ilerleme çubuğu
+    const sp = document.getElementById('scroll-progress');
+    if(sp){
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      sp.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, y / h) : 0) + ')';
+    }
+    _lastY = y;
+  }, {passive:true});
   document.addEventListener('keydown', function(e){
     if(e.key==='Escape'){closeSearch();closeAnnounce();closeLightbox();closeNav();}
+    if(e.key==='/' && !e.ctrlKey && !e.altKey){
+      const t=(e.target&&e.target.tagName||'').toLowerCase();
+      if(t!=='input' && t!=='textarea' && document.getElementById('site-view').className==='on'){
+        e.preventDefault(); openSearch();
+      }
+    }
   });
   checkAnnounce();
 }
@@ -2160,17 +2294,17 @@ const D_TEAM = [
   {id:1, unit:'Genel Merkez', role:'Genel Başkan',            name:'Hüseyin Necip NALBANTOĞLU', img:PHOTOS.p1},
   {id:2, unit:'Genel Merkez', role:'Genel Başkan Yardımcısı', name:'Emre Ahmet NALBANTOĞLU',    img:PHOTOS.p2},
   {id:3, unit:'Genel Merkez', role:'Genel Başkan Yardımcısı', name:'Tamer ÖZTÜRK',              img:PHOTOS.p3},
-  {id:4, unit:'Anadolu Şubesi', role:'Şube Başkanı',        name:'İsmail ÖZGÜR',      img:''},
-  {id:5, unit:'Anadolu Şubesi', role:'Şube Sekreteri',       name:'Hasan YILMAZ',      img:''},
-  {id:6, unit:'Anadolu Şubesi', role:'Şube Mali Sekreteri',  name:'Uğur Bayram TAN',   img:''},
-  {id:7, unit:'Pendik Şubesi',  role:'Şube Başkanı',        name:'Cengiz YAVUZ',      img:''},
-  {id:8, unit:'Pendik Şubesi',  role:'Şube Sekreteri',       name:'Mertgün ACAR',      img:''},
-  {id:9, unit:'Pendik Şubesi',  role:'Şube Mali Sekreteri',  name:'Bülent GENCER',     img:''},
+  {id:4, unit:'Anadolu Şubesi', role:'Şube Başkanı',        name:'Harun ŞEN',         img:''},
+  {id:5, unit:'Anadolu Şubesi', role:'Şube Sekreteri',       name:'Uğur Bayram TAN',   img:''},
+  {id:6, unit:'Anadolu Şubesi', role:'Şube Mali Sekreteri',  name:'Birol TORAMAN',     img:''},
+  {id:7, unit:'Pendik Şubesi',  role:'Şube Başkanı',        name:'Mertgün ACAR',      img:''},
+  {id:8, unit:'Pendik Şubesi',  role:'Şube Sekreteri',       name:'Ziya ÇALIK',        img:''},
+  {id:9, unit:'Pendik Şubesi',  role:'Şube Mali Sekreteri',  name:'Halil YETİM',       img:''},
   {id:10,unit:'Tuzla Şubesi',   role:'Şube Başkanı',        name:'Mehmet Emin ATASOY',img:''},
-  {id:11,unit:'Tuzla Şubesi',   role:'Şube Sekreteri',       name:'Selahattin SADİOĞLU',img:''},
-  {id:12,unit:'Tuzla Şubesi',   role:'Şube Mali Sekreteri',  name:'Savaş YEŞİLDAL',    img:''},
-  {id:13,unit:'Marmara Şubesi', role:'Şube Başkanı',        name:'Ramazan BODUR',     img:''},
-  {id:14,unit:'Marmara Şubesi', role:'Şube Sekreteri',       name:'Gökmen YILMAZ',     img:''},
+  {id:11,unit:'Tuzla Şubesi',   role:'Şube Sekreteri',       name:'Taner ZAİM',        img:''},
+  {id:12,unit:'Tuzla Şubesi',   role:'Şube Mali Sekreteri',  name:'Gökhan BOSTAN',     img:''},
+  {id:13,unit:'Marmara Şubesi', role:'Şube Başkanı',        name:'Abdullah TÜRE',     img:''},
+  {id:14,unit:'Marmara Şubesi', role:'Şube Sekreteri',       name:'Erkan ÖZBUĞANLI',   img:''},
   {id:15,unit:'Marmara Şubesi', role:'Şube Mali Sekreteri',  name:'Mehmet Emin EROL',  img:''},
 ];
 function TEAM(){return gd(K2.team, LIVE.team||D_TEAM);}
@@ -2190,9 +2324,9 @@ SPAGES.yonetim = function(){
   T.forEach(function(p){ if(units.indexOf(p.unit)===-1) units.push(p.unit); });
   let html = '<div class="page-hero"><div class="page-hero-inner"><div class="sec-label">Kurumsal</div><h1>Yönetim Kadromuz</h1></div></div>'
     + '<div class="spage"><div class="wrap">'
-    + '<p class="sec-lead">Genel Merkez yönetimimiz ve dört şubemizin kadrosu — sizlere hizmet etmek için buradayız.</p>';
+    + '<p class="sec-lead pteam-lead">Genel Merkez yönetimimiz ve dört şubemizin kadrosu — sizlere hizmet etmek için buradayız.</p>';
   units.forEach(function(u){
-    html += '<div class="branch-head"><h3>'+u+'</h3><div class="bh-line"></div></div>'
+    html += '<div class="branch-head"><span class="bh-line"></span><h3>'+u+'</h3><span class="bh-line"></span></div>'
       + '<div class="pteam-grid">'
       + T.filter(function(p){return p.unit===u;}).map(pcardHTML).join('')
       + '</div>';
@@ -2419,7 +2553,7 @@ SPAGES.iletisim = function(){
   const C=CONTACT(),S=SOCIAL();
   const mapQ = encodeURIComponent((C.addr1||'')+' '+(C.addr3||'İstanbul'));
   const waCard = C.wa
-    ? '<div class="ci-card"><div class="ci-icon" style="background:#25D366">'+svi('phone',20)+'</div><div><h4>WhatsApp Destek</h4><a href="https://wa.me/'+C.wa.replace(/[^0-9]/g,'')+'" target="_blank" rel="noopener">Mesaj Gönderin →</a></div></div>'
+    ? '<div class="ci-card"><div class="ci-icon" style="background:#25D366">'+svi('phone',20)+'</div><div><h4>WhatsApp Destek</h4><a href="https://wa.me/'+C.wa.replace(/[^0-9]/g,'')+'" target="_blank" rel="noopener">'+fmtWa(C.wa)+' →</a></div></div>'
     : '';
   return '<div class="page-hero"><div class="page-hero-inner"><div class="sec-label">Bize Ulaşın</div><h1>İletişim</h1></div></div>'
     + '<div class="spage"><div class="wrap"><div class="contact-layout">'
@@ -2456,13 +2590,24 @@ function sendContactMail(){
 function openKvkk(){document.getElementById('kvkk-ov').classList.add('open');return false;}
 function closeKvkk(){document.getElementById('kvkk-ov').classList.remove('open');}
 // ── WhatsApp buton ──
+function fmtWa(w){
+  var n=(w||'').replace(/[^0-9]/g,'');
+  return n.length===12 ? '0'+n.slice(2,5)+' '+n.slice(5,8)+' '+n.slice(8,10)+' '+n.slice(10) : w;
+}
 function updateWhatsApp(){
   const el=document.getElementById('wabtn');
   if(!el)return;
   const C=CONTACT();
   const num=(C.wa||'').replace(/[^0-9]/g,'');
-  if(num){el.href='https://wa.me/'+num+'?text='+encodeURIComponent('Merhaba, sendika üyeliği hakkında bilgi almak istiyorum.');el.style.display='flex';}
+  if(num){
+    el.href='https://wa.me/'+num+'?text='+encodeURIComponent('Merhaba, sendika üyeliği hakkında bilgi almak istiyorum.');
+    el.style.display='flex';
+    var wn=document.getElementById('wa-num');
+    if(wn&&num.length===12){wn.textContent='0'+num.slice(2,5)+' '+num.slice(5,8)+' '+num.slice(8,10)+' '+num.slice(10);}
+  }
   else{el.style.display='none';}
+  var mw=document.getElementById('mcta-wa');
+  if(mw){ if(num){mw.href='https://wa.me/'+num;mw.style.display='flex';} else {mw.style.display='none';} }
 }
 // ── Scroll reveal ──
 function revealInit(){
@@ -2479,8 +2624,16 @@ function revealInit(){
 // ── Önbellek göçü: mevcut kullanıcı verisine yeni varsayılanları ekle ──
 (function(){
   try{
+    var tv=LS.getItem(K2.team);
+    if(tv){var ta=JSON.parse(tv);var tm={4:['İsmail ÖZGÜR','Harun ŞEN'],5:['Hasan YILMAZ','Uğur Bayram TAN'],6:['Uğur Bayram TAN','Birol TORAMAN'],7:['Cengiz YAVUZ','Mertgün ACAR'],8:['Mertgün ACAR','Ziya ÇALIK'],9:['Bülent GENCER','Halil YETİM'],11:['Selahattin SADİOĞLU','Taner ZAİM'],12:['Savaş YEŞİLDAL','Gökhan BOSTAN'],13:['Ramazan BODUR','Abdullah TÜRE'],14:['Gökmen YILMAZ','Erkan ÖZBUĞANLI']};
+      var ch=false;
+      ta.forEach(function(p){var m=tm[p.id];if(m&&p.name===m[0]){p.name=m[1];ch=true;}});
+      if(ch)LS.setItem(K2.team,JSON.stringify(ta));
+    }
+  }catch(e){}
+  try{
     var cv=LS.getItem(K.contact);
-    if(cv){var co=JSON.parse(cv);if(!co.wa){co.wa='905415762614';LS.setItem(K.contact,JSON.stringify(co));}}
+    if(cv){var co=JSON.parse(cv);if(!co.wa||co.wa==='905415762614'){co.wa='905363321463';LS.setItem(K.contact,JSON.stringify(co));}}
   }catch(e){}
   try{
     var s=LS.getItem(K.social);
@@ -2670,6 +2823,7 @@ function loadLive(done){
 var _al=document.getElementById('a-logo'); if(_al) _al.src=LOGOIMG;
 var _ml=document.getElementById('mnav-logo'); if(_ml) _ml.src=LOGOIMG;
 var _ll=document.getElementById('login-logo-img'); if(_ll) _ll.src=LOGOIMG;
+try{document.documentElement.style.fontSize='';LS.removeItem('dg_fs');}catch(e){}
 try{console.log('%cDok Gemi-İş · Sürüm 2.2','color:#C72119;font-weight:bold');}catch(e){}
 function boot(){
   if(location.hash==='#admin'){ showLogin(); } else { showSite(); }
