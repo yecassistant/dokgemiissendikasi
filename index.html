@@ -252,7 +252,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:60px 0 32px}
 .pw-reset:hover{color:#fff}
 .login-box p{line-height:1.6}
 .login-btn:disabled{opacity:.55;cursor:default}
-.login-box p.login-hint{color:rgba(255,255,255,.32);font-size:.72rem;margin:16px 0 0}
 .login-err.soft{color:rgba(255,255,255,.6)}
 .lb-vlink{display:flex;align-items:center;justify-content:center}
 .login-ver{margin-top:22px;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.18)}
@@ -1001,7 +1000,6 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
       <input type="password" id="su-pw" placeholder="Yeni panel şifresi (en az 8 karakter)" autocomplete="new-password"/>
       <input type="password" id="su-pw2" placeholder="Panel şifresi (tekrar)" autocomplete="new-password"/>
       <button class="login-btn" id="setup-go" type="submit">Doğrula ve Kur</button>
-      <p class="login-hint" id="su-hint">Anahtar: github.com → Settings → Developer settings → Fine-grained tokens. Yalnızca bu depo, Contents: Read and write.</p>
     </form>
     <div class="login-err" id="login-err"></div>
     <button class="pw-reset" id="login-forget" type="button" onclick="forgetDevice()">Şifremi unuttum</button>
@@ -1640,7 +1638,7 @@ function renderLogin(){
   document.getElementById('login-form').style.display=ok&&has?'':'none';
   document.getElementById('setup-form').style.display=ok&&!has?'':'none';
   document.getElementById('login-forget').style.display=ok&&has?'':'none';
-  document.getElementById('su-token').style.display=document.getElementById('su-hint').style.display=old?'none':'';
+  document.getElementById('su-token').style.display=old?'none':'';
   document.getElementById('login-sub').textContent=!ok
     ?'Bu tarayıcı güvenli girişi desteklemiyor. Siteyi https adresinden, güncel bir tarayıcıyla açın.'
     :has?'Panel şifrenizi girin.'
@@ -1676,7 +1674,7 @@ function doSetup(ev){
   AUTH.setup(tk.value,p1.value).then(function(state){
     loginBusy(false);
     if(state==='ok'){tk.value=p1.value=p2.value='';enterPanel('Bu cihaz yetkilendirildi');return;}
-    tk.style.display=document.getElementById('su-hint').style.display='';
+    tk.style.display='';
     loginMsg(SETUP_ERR[state]||SETUP_ERR.error);
   }).catch(function(){loginBusy(false);loginMsg(SETUP_ERR.error);});
   return false;
