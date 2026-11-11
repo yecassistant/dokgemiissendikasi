@@ -949,6 +949,19 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
   .haber-desc{font-size:.98rem}
   .hbtn{flex:1;justify-content:center}
 }
+
+/* ── Admin ikon sistemi (emoji→SVG) ── */
+.ai{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:0}
+.a-nav-item .ai{opacity:.92}
+.a-nav-item.active .ai{opacity:1}
+.a-card-head h3,.info-card h4,.export-box h3{display:flex;align-items:center;gap:8px}
+.a-card-head h3 .ai,.info-card h4 .ai,.export-box h3 .ai{color:var(--red)}
+.afg label{display:inline-flex;align-items:center}
+.afg label .ai{margin-right:5px;color:var(--mid)}
+.abtn .ai{opacity:.95}
+.stat-card .ico{color:var(--red);line-height:0}
+.stat-card.hl .ico{color:#fff}
+.td-ico{color:var(--red)}
 </style>
 </head>
 <body>
@@ -1061,7 +1074,7 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
     <div class="login-err" id="login-err">Şifre hatalı. Lütfen tekrar deneyin.</div>
     <button class="pw-reset" onclick="resetPw()">Şifremi unuttum — varsayılana sıfırla</button>
     <button class="back-btn" onclick="showSite()" style="display:block;margin:10px auto 0">← Siteye Dön</button>
-    <div class="login-ver">Sürüm 2.7 · Ağustos 2026</div>
+    <div class="login-ver">Sürüm 2.8 · Kasım 2026</div>
   </div>
 </div>
 
@@ -1075,17 +1088,17 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
       </div>
       <div class="a-nav">
         <span class="a-sec-lbl">Genel</span>
-        <button class="a-nav-item active" onclick="aGo('dashboard',this)"><span>📊</span> Gösterge Paneli</button>
+        <button class="a-nav-item active" onclick="aGo('dashboard',this)"><span class="ai" data-i="chart" data-s="18"></span> Gösterge Paneli</button>
         <span class="a-sec-lbl">İçerik</span>
-        <button class="a-nav-item" onclick="aGo('haberler',this)"><span>📰</span> Haberler</button>
-        <button class="a-nav-item" onclick="aGo('iletisim',this)"><span>📞</span> İletişim</button>
-        <button class="a-nav-item" onclick="aGo('sosyal',this)"><span>🌐</span> Sosyal Medya</button>
-        <button class="a-nav-item" onclick="aGo('duyuru',this)"><span>📢</span> Duyuru</button>
-        <button class="a-nav-item" onclick="aGo('galeri',this)"><span>🖼️</span> Galeri</button>
-        <button class="a-nav-item" onclick="aGo('kadro',this)"><span>👥</span> Yönetim Kadrosu</button>
+        <button class="a-nav-item" onclick="aGo('haberler',this)"><span class="ai" data-i="news" data-s="18"></span> Haberler</button>
+        <button class="a-nav-item" onclick="aGo('iletisim',this)"><span class="ai" data-i="phone" data-s="18"></span> İletişim</button>
+        <button class="a-nav-item" onclick="aGo('sosyal',this)"><span class="ai" data-i="globe" data-s="18"></span> Sosyal Medya</button>
+        <button class="a-nav-item" onclick="aGo('duyuru',this)"><span class="ai" data-i="mega" data-s="18"></span> Duyuru</button>
+        <button class="a-nav-item" onclick="aGo('galeri',this)"><span class="ai" data-i="camera" data-s="18"></span> Galeri</button>
+        <button class="a-nav-item" onclick="aGo('kadro',this)"><span class="ai" data-i="users" data-s="18"></span> Yönetim Kadrosu</button>
         <span class="a-sec-lbl">Sistem</span>
-        <button class="a-nav-item" onclick="aGo('export',this)"><span>💾</span> Yedek & Aktarım</button>
-        <button class="a-nav-item" onclick="aGo('ayarlar',this)"><span>⚙️</span> Ayarlar</button>
+        <button class="a-nav-item" onclick="aGo('export',this)"><span class="ai" data-i="save" data-s="18"></span> Yedek & Aktarım</button>
+        <button class="a-nav-item" onclick="aGo('ayarlar',this)"><span class="ai" data-i="gear" data-s="18"></span> Ayarlar</button>
       </div>
       <div class="a-sidebar-foot">
         <div class="a-avatar">A</div>
@@ -1098,8 +1111,8 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
         <h2 id="a-page-title">Gösterge Paneli</h2>
         <div class="a-topbar-right">
           <div id="a-topbar-action"></div>
-          <button class="abtn abtn-primary abtn-sm" onclick="publishLive()" title="Değişiklikleri herkese yayınla">🌍 Canlıya Yayınla</button>
-          <button class="a-preview-btn" onclick="showSiteRefresh()">🔗 Siteyi Görüntüle</button>
+          <button class="abtn abtn-primary abtn-sm" onclick="publishLive()" title="Değişiklikleri herkese yayınla"><i class="ai" data-i="upload" data-s="15"></i> Canlıya Yayınla</button>
+          <button class="a-preview-btn" onclick="showSiteRefresh()"><i class="ai" data-i="globe" data-s="15"></i> Siteyi Görüntüle</button>
         </div>
       </div>
       <div class="a-content">
@@ -1107,7 +1120,7 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
         <div id="ap-dashboard" class="a-page active">
           <div class="stat-grid" id="a-stats"></div>
           <div class="a-card">
-            <div class="a-card-head"><h3>📰 Son Haberler</h3><button class="abtn abtn-primary abtn-sm" onclick="openNewsModal()">+ Haber Ekle</button></div>
+            <div class="a-card-head"><h3><i class="ai" data-i="news" data-s="17"></i> Son Haberler</h3><button class="abtn abtn-primary abtn-sm" onclick="openNewsModal()">+ Haber Ekle</button></div>
             <table><thead><tr><th>Haber</th><th>Tarih</th><th>Durum</th><th></th></tr></thead><tbody id="dash-tbody"></tbody></table>
           </div>
         </div>
@@ -1121,41 +1134,41 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
         <!-- İLETİŞİM -->
         <div id="ap-iletisim" class="a-page">
           <div class="info-grid-2">
-            <div class="info-card"><h4>📞 Telefon & E-posta</h4>
+            <div class="info-card"><h4><i class="ai" data-i="phone" data-s="17"></i> Telefon & E-posta</h4>
               <div class="afg"><label>Telefon 1</label><input id="c-tel1" type="text"/></div>
               <div class="afg"><label>Telefon 2</label><input id="c-tel2" type="text"/></div>
               <div class="afg"><label>E-posta</label><input id="c-email" type="email"/></div>
               <div class="afg"><label>WhatsApp Hattı</label><input id="c-wa" type="text" placeholder="905XXXXXXXXX (boşsa buton gizlenir)"/></div>
             </div>
-            <div class="info-card"><h4>📍 Adres</h4>
+            <div class="info-card"><h4><i class="ai" data-i="pin" data-s="17"></i> Adres</h4>
               <div class="afg"><label>Adres Satırı 1</label><input id="c-addr1" type="text"/></div>
               <div class="afg"><label>Adres Satırı 2</label><input id="c-addr2" type="text"/></div>
               <div class="afg"><label>İlçe / Şehir</label><input id="c-addr3" type="text"/></div>
             </div>
-            <div class="info-card"><h4>🕐 Çalışma Saatleri</h4>
+            <div class="info-card"><h4><i class="ai" data-i="clock" data-s="17"></i> Çalışma Saatleri</h4>
               <div class="afg"><label>Hafta İçi</label><input id="c-h1" type="text"/></div>
               <div class="afg"><label>Cumartesi</label><input id="c-h2" type="text"/></div>
             </div>
-            <div class="info-card"><h4>🌐 Web</h4>
+            <div class="info-card"><h4><i class="ai" data-i="globe" data-s="17"></i> Web</h4>
               <div class="afg"><label>Ana Site</label><input id="c-web" type="text"/></div>
               <div class="afg"><label>e-Devlet Üyelik URL</label><input id="c-edev" type="text"/></div>
             </div>
           </div>
-          <div style="text-align:right;margin-top:8px"><button class="abtn abtn-primary" onclick="saveContact()">💾 Kaydet</button></div>
+          <div style="text-align:right;margin-top:8px"><button class="abtn abtn-primary" onclick="saveContact()"><i class="ai" data-i="save" data-s="15"></i> Kaydet</button></div>
         </div>
         <!-- SOSYAL MEDYA -->
         <div id="ap-sosyal" class="a-page">
           <div class="a-card"><div class="a-card-head"><h3>Sosyal Medya Hesapları</h3></div>
           <div style="padding:20px;display:flex;flex-direction:column;gap:12px">
-            <div class="afg"><label>📸 Instagram URL</label><input id="s-ig" type="text"/></div>
-            <div class="afg"><label>🐦 Twitter / X URL</label><input id="s-tw" type="text"/></div>
-            <div class="afg"><label>📘 Facebook URL</label><input id="s-fb" type="text"/></div>
-            <div style="text-align:right"><button class="abtn abtn-primary" onclick="saveSocial()">💾 Kaydet</button></div>
+            <div class="afg"><label><i class="ai" data-i="ig" data-s="14"></i> Instagram URL</label><input id="s-ig" type="text"/></div>
+            <div class="afg"><label><i class="ai" data-i="xcom" data-s="14"></i> Twitter / X URL</label><input id="s-tw" type="text"/></div>
+            <div class="afg"><label><i class="ai" data-i="fb" data-s="14"></i> Facebook URL</label><input id="s-fb" type="text"/></div>
+            <div style="text-align:right"><button class="abtn abtn-primary" onclick="saveSocial()"><i class="ai" data-i="save" data-s="15"></i> Kaydet</button></div>
           </div></div>
         </div>
         <!-- KADRO -->
         <div id="ap-kadro" class="a-page">
-          <div class="a-card"><div class="a-card-head"><h3>👥 Yönetim Kadrosu — Fotoğraf Yönetimi</h3></div>
+          <div class="a-card"><div class="a-card-head"><h3><i class="ai" data-i="users" data-s="17"></i> Yönetim Kadrosu — Fotoğraf Yönetimi</h3></div>
           <div style="padding:16px 20px 6px"><p style="font-size:.78rem;color:var(--mid)">Her yönetici için fotoğraf URL'si girin (boşsa baş harfli kurumsal kart gösterilir). Değişiklikler kaydedince sitede anında güncellenir.</p></div>
           <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
             <select id="k-newunit" class="k-sel" style="min-width:160px">
@@ -1165,12 +1178,12 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
             <span style="font-size:.72rem;color:var(--mid)">İsim/görev/birim değişikliği için <b>Tümünü Kaydet</b>'e basın · Ekleme, silme ve sıralama anında kaydedilir</span>
           </div>
           <table><thead><tr><th style="min-width:210px">İsim &amp; Görev</th><th>Birim</th><th style="min-width:220px">Fotoğraf</th><th style="width:110px">İşlem</th></tr></thead><tbody id="kadro-tbody"></tbody></table>
-          <div style="padding:16px 20px;text-align:right;border-top:1px solid var(--border)"><button class="abtn abtn-primary" onclick="saveTeam()">💾 Tümünü Kaydet</button></div>
+          <div style="padding:16px 20px;text-align:right;border-top:1px solid var(--border)"><button class="abtn abtn-primary" onclick="saveTeam()"><i class="ai" data-i="save" data-s="15"></i> Tümünü Kaydet</button></div>
           </div>
         </div>
         <!-- DUYURU -->
         <div id="ap-duyuru" class="a-page">
-          <div class="a-card" style="max-width:560px"><div class="a-card-head"><h3>📢 Site Duyurusu (Pop-up)</h3></div>
+          <div class="a-card" style="max-width:560px"><div class="a-card-head"><h3><i class="ai" data-i="mega" data-s="17"></i> Site Duyurusu (Pop-up)</h3></div>
           <div style="padding:20px">
             <div class="afg" style="display:flex;align-items:center;gap:10px;background:var(--bg);border-radius:9px;padding:12px 14px">
               <input type="checkbox" id="an-active" style="width:20px;height:20px;cursor:pointer"/>
@@ -1183,22 +1196,22 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
               <div class="afg"><label>Buton Linki</label><input id="an-url" type="text" placeholder="https://... veya boş"/></div>
             </div>
             <div style="display:flex;gap:10px;justify-content:flex-end">
-              <button class="abtn abtn-secondary" onclick="previewAnnounce()">👁 Önizle</button>
-              <button class="abtn abtn-primary" onclick="saveAnnounce()">💾 Kaydet & Yayınla</button>
+              <button class="abtn abtn-secondary" onclick="previewAnnounce()"><i class="ai" data-i="eye" data-s="15"></i> Önizle</button>
+              <button class="abtn abtn-primary" onclick="saveAnnounce()"><i class="ai" data-i="save" data-s="15"></i> Kaydet & Yayınla</button>
             </div>
-            <p style="font-size:.72rem;color:var(--mid);margin-top:12px">💡 Her kaydedişte duyuru yeni sayılır ve ziyaretçilere (oturum başına 1 kez) tekrar gösterilir.</p>
+            <p style="font-size:.72rem;color:var(--mid);margin-top:12px"><i class="ai" data-i="bulb" data-s="14"></i> Her kaydedişte duyuru yeni sayılır ve ziyaretçilere (oturum başına 1 kez) tekrar gösterilir.</p>
           </div></div>
         </div>
         <!-- GALERİ -->
         <div id="ap-galeri" class="a-page">
-          <div class="a-card" style="max-width:560px"><div class="a-card-head"><h3>🖼️ Yeni Fotoğraf Ekle</h3></div>
+          <div class="a-card" style="max-width:560px"><div class="a-card-head"><h3><i class="ai" data-i="camera" data-s="17"></i> Yeni Fotoğraf Ekle</h3></div>
           <div style="padding:20px">
             <div class="afg"><label>Başlık / Açıklama *</label><input id="g-cap" type="text" placeholder="Örn: 1 Mayıs Edirne Yürüyüşü"/></div>
             <div class="afg"><label>Tarih</label><input id="g-date" type="text" placeholder="1 Mayıs 2026"/></div>
             <div class="afg"><label>Fotoğraf (isteğe bağlı)</label>
             <div style="display:flex;gap:8px">
               <input id="g-img" type="text" placeholder="https://... veya →" style="flex:1"/>
-              <button type="button" class="abtn abtn-secondary" style="white-space:nowrap" onclick="document.getElementById('g-imgfile').click()">📁 Seç</button>
+              <button type="button" class="abtn abtn-secondary" style="white-space:nowrap" onclick="document.getElementById('g-imgfile').click()"><i class="ai" data-i="folder" data-s="15"></i> Seç</button>
               <input type="file" id="g-imgfile" accept="image/*" style="display:none" onchange="onGalFile(this)"/>
             </div>
           </div>
@@ -1217,42 +1230,42 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
         <!-- EXPORT -->
         <div id="ap-export" class="a-page">
           <div class="export-box">
-            <h3>💾 Veri Yedekleme & Aktarım</h3>
+            <h3><i class="ai" data-i="save" data-s="17"></i> Veri Yedekleme & Aktarım</h3>
             <p>Tüm içerikleri JSON olarak indirin, farklı bir bilgisayarda içe aktarın.</p>
             <div class="export-btns">
-              <button class="export-btn" onclick="exportData()">⬇️ Veriyi İndir (JSON)</button>
-              <button class="export-btn" onclick="document.getElementById('imp-file').click()">⬆️ Veri Yükle (JSON)</button>
+              <button class="export-btn" onclick="exportData()"><i class="ai" data-i="download" data-s="15"></i> Veriyi İndir (JSON)</button>
+              <button class="export-btn" onclick="document.getElementById('imp-file').click()"><i class="ai" data-i="upload" data-s="15"></i> Veri Yükle (JSON)</button>
               <input type="file" id="imp-file" accept=".json" style="display:none" onchange="importData(this)"/>
             </div>
           </div>
           <div class="import-area" onclick="document.getElementById('imp-file').click()">
-            <div style="font-size:2rem">📂</div>
+            <div style="font-size:2rem"><i class="ai" data-i="folder" data-s="34"></i></div>
             <p style="font-size:.84rem;color:var(--mid);margin-top:6px">JSON dosyasını seçmek için tıklayın</p>
           </div>
           <div class="a-card" style="margin-top:18px"><div class="a-card-head"><h3>Mevcut Veri</h3></div><div style="padding:18px" id="data-sum"></div></div>
         </div>
         <!-- AYARLAR -->
         <div id="ap-ayarlar" class="a-page">
-          <div class="a-card" style="max-width:400px"><div class="a-card-head"><h3>🔐 Şifre Değiştir</h3></div>
+          <div class="a-card" style="max-width:400px"><div class="a-card-head"><h3><i class="ai" data-i="lock" data-s="17"></i> Şifre Değiştir</h3></div>
           <div style="padding:20px">
             <div class="afg"><label>Mevcut Şifre</label><input type="password" id="pw-old"/></div>
             <div class="afg"><label>Yeni Şifre</label><input type="password" id="pw-new"/></div>
             <div class="afg"><label>Yeni Şifre (Tekrar)</label><input type="password" id="pw-new2"/></div>
             <button class="abtn abtn-primary" onclick="changePw()">Güncelle</button>
           </div></div>
-          <div class="a-card" style="max-width:440px;margin-top:16px"><div class="a-card-head"><h3>🌍 Canlı Yayın Bağlantısı (GitHub)</h3></div>
+          <div class="a-card" style="max-width:440px;margin-top:16px"><div class="a-card-head"><h3><i class="ai" data-i="globe" data-s="17"></i> Canlı Yayın Bağlantısı (GitHub)</h3></div>
           <div style="padding:20px">
-            <p style="font-size:.78rem;color:var(--mid);margin-bottom:14px">Bir kez kurun, sonra <strong>"🌍 Canlıya Yayınla"</strong> butonuyla değişiklikleriniz sitenin internetteki halinde <strong>herkese</strong> görünsün.</p>
+            <p style="font-size:.78rem;color:var(--mid);margin-bottom:14px">Bir kez kurun, sonra <strong>"Canlıya Yayınla"</strong> butonuyla değişiklikleriniz sitenin internetteki halinde <strong>herkese</strong> görünsün.</p>
             <div class="afg"><label>GitHub Kullanıcı Adı</label><input id="gh-user" type="text" placeholder="ornek: ahmetyilmaz"/></div>
             <div class="afg"><label>Depo (Repo) Adı</label><input id="gh-repo" type="text" placeholder="dokgemiissendikasi"/></div>
             <div class="afg"><label>Erişim Anahtarı (Token)</label><input id="gh-token" type="password" placeholder="github_pat_... veya ghp_..."/></div>
             <div style="display:flex;gap:10px;justify-content:flex-end">
-              <button class="abtn abtn-secondary" onclick="testGh()">🔌 Bağlantıyı Test Et</button>
-              <button class="abtn abtn-primary" onclick="saveGh()">💾 Kaydet</button>
+              <button class="abtn abtn-secondary" onclick="testGh()"><i class="ai" data-i="plug" data-s="15"></i> Bağlantıyı Test Et</button>
+              <button class="abtn abtn-primary" onclick="saveGh()"><i class="ai" data-i="save" data-s="15"></i> Kaydet</button>
             </div>
-            <p style="font-size:.7rem;color:var(--mid);margin-top:12px;line-height:1.6">🔑 Anahtar almak için: github.com → sağ üst profil → <strong>Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate</strong>. Repository access: sadece bu depo. Permissions: <strong>Contents → Read and write</strong>. Anahtar yalnızca bu tarayıcıda saklanır.</p>
+            <p style="font-size:.7rem;color:var(--mid);margin-top:12px;line-height:1.6"><i class="ai" data-i="lock" data-s="13"></i> Anahtar almak için: github.com → sağ üst profil → <strong>Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate</strong>. Repository access: sadece bu depo. Permissions: <strong>Contents → Read and write</strong>. Anahtar yalnızca bu tarayıcıda saklanır.</p>
           </div></div>
-          <div class="a-card" style="max-width:400px;margin-top:16px"><div class="a-card-head"><h3>🗑️ Sıfırla</h3></div>
+          <div class="a-card" style="max-width:400px;margin-top:16px"><div class="a-card-head"><h3><i class="ai" data-i="trash" data-s="17"></i> Sıfırla</h3></div>
           <div style="padding:20px">
             <p style="font-size:.84rem;color:var(--mid);margin-bottom:14px">Tüm veriler silinir ve varsayılana döner.</p>
             <button class="abtn abtn-danger" onclick="if(confirm('Emin misiniz?'))resetAll()">Tüm Veriyi Sil</button>
@@ -1285,15 +1298,15 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
       <div class="afg"><label>Haber Görseli (isteğe bağlı)</label>
         <div style="display:flex;gap:8px">
           <input type="text" id="n-img" placeholder="https://... yapıştırın veya →" style="flex:1"/>
-          <button type="button" class="abtn abtn-secondary" style="white-space:nowrap" onclick="document.getElementById('n-imgfile').click()">📁 Bilgisayardan Seç</button>
+          <button type="button" class="abtn abtn-secondary" style="white-space:nowrap" onclick="document.getElementById('n-imgfile').click()"><i class="ai" data-i="folder" data-s="15"></i> Bilgisayardan Seç</button>
           <input type="file" id="n-imgfile" accept="image/*" style="display:none" onchange="onNewsFile(this)"/>
         </div>
       </div>
-      <div class="afg"><label>İkon Seç</label><div class="emoji-grid" id="emoji-grid"></div><input type="hidden" id="n-emoji" value="📰"/></div>
+      <input type="hidden" id="n-emoji" value="news"/>
     </div>
     <div class="modal-foot">
       <button class="abtn abtn-secondary" onclick="closeModal()">İptal</button>
-      <button class="abtn abtn-primary" onclick="saveNews()">💾 Kaydet</button>
+      <button class="abtn abtn-primary" onclick="saveNews()"><i class="ai" data-i="save" data-s="15"></i> Kaydet</button>
     </div>
   </div>
 </div>
@@ -1409,7 +1422,7 @@ function gd(k,def){try{const v=LS.getItem(k);return v?JSON.parse(v):def;}catch{r
 function sd(k,v){
   try{LS.setItem(k,JSON.stringify(v));return true;}
   catch(err){
-    try{toast('⚠ Depolama dolu! Eski fotoğrafları silin veya daha küçük görsel kullanın.','err');}catch(e2){}
+    try{toast('Depolama dolu! Eski fotoğrafları silin veya daha küçük görsel kullanın.','err');}catch(e2){}
     return false;
   }
 }
@@ -1550,7 +1563,7 @@ function toast(msg,type='ok'){
   const wrap=document.getElementById('toasts');
   const el=document.createElement('div');
   el.className='toast '+type;
-  el.innerHTML=(type==='ok'?'✅ ':'❌ ')+msg;
+  el.innerHTML=(type==='ok'?svi('check',14):svi('cross',14))+' '+msg;
   wrap.appendChild(el);
   setTimeout(()=>el.remove(),3200);
 }
@@ -1990,28 +2003,28 @@ function aGo(id,btn){
 function aRenderDash(){
   const N=NEWS(),n26=N.filter(n=>n.date&&n.date.includes('2026')).length;
   document.getElementById('a-stats').innerHTML=`
-    <div class="stat-card hl"><span class="ico">📰</span><div class="num">${N.length}</div><div class="lbl">Toplam Haber</div></div>
-    <div class="stat-card"><span class="ico">🆕</span><div class="num">${n26}</div><div class="lbl">2026 Haberleri</div></div>
-    <div class="stat-card"><span class="ico">🏭</span><div class="num">36</div><div class="lbl">TİS İşyeri</div></div>
-    <div class="stat-card"><span class="ico">⚓</span><div class="num">Türk-İş</div><div class="lbl">Konfederasyon</div></div>`;
+    <div class="stat-card hl"><span class="ico">${svi('news',22)}</span><div class="num">${N.length}</div><div class="lbl">Toplam Haber</div></div>
+    <div class="stat-card"><span class="ico">${svi('star',22)}</span><div class="num">${n26}</div><div class="lbl">2026 Haberleri</div></div>
+    <div class="stat-card"><span class="ico">${svi('factory',22)}</span><div class="num">36</div><div class="lbl">TİS İşyeri</div></div>
+    <div class="stat-card"><span class="ico">${svi('medal',22)}</span><div class="num">Türk-İş</div><div class="lbl">Konfederasyon</div></div>`;
   document.getElementById('dash-tbody').innerHTML=N.slice(0,6).map(n=>`<tr>
-    <td class="td-title">${n.e||'📰'} ${n.title}</td>
+    <td class="td-title">${svi('news',16)} ${n.title}</td>
     <td class="td-date">${n.date||''}</td>
     <td><span class="xbadge ${n.date&&n.date.includes('2026')?'xb-new':n.date&&n.date.includes('2025')?'xb-25':'xb-old'}">${n.date&&n.date.includes('2026')?'YENİ':n.date&&n.date.includes('2025')?'2025':'Eski'}</span></td>
-    <td><button class="abtn abtn-secondary abtn-sm abtn-icon" onclick="editNews(${n.id})">✏️</button></td>
+    <td><button class="abtn abtn-secondary abtn-sm abtn-icon" onclick="editNews(${n.id})" title="Düzenle">${svi('edit',15)}</button></td>
   </tr>`).join('');
 }
 function aRenderNews(){
   const N=NEWS();
   document.getElementById('news-tbody').innerHTML=N.map(n=>`<tr>
-    <td style="font-size:1.3rem">${n.e||'📰'}</td>
+    <td class="td-ico">${svi('news',18)}</td>
     <td class="td-title">${n.title}</td>
     <td class="td-date">${n.date||''}</td>
     <td><span class="xbadge ${n.date&&n.date.includes('2026')?'xb-new':n.date&&n.date.includes('2025')?'xb-25':'xb-old'}">${n.date&&n.date.includes('2026')?'2026':n.date&&n.date.includes('2025')?'2025':'Eski'}</span></td>
     <td style="white-space:nowrap">
-      <button class="abtn abtn-secondary abtn-sm abtn-icon" onclick="copyHaberLink(${n.id})" title="Paylaşım linkini kopyala">🔗</button>
-      <button class="abtn abtn-secondary abtn-sm abtn-icon" onclick="editNews(${n.id})" style="margin-left:4px">✏️</button>
-      <button class="abtn abtn-danger abtn-sm abtn-icon" onclick="delNews(${n.id})" style="margin-left:4px">🗑️</button>
+      <button class="abtn abtn-secondary abtn-sm abtn-icon" onclick="copyHaberLink(${n.id})" title="Paylaşım linkini kopyala">${svi('link',15)}</button>
+      <button class="abtn abtn-secondary abtn-sm abtn-icon" onclick="editNews(${n.id})" style="margin-left:4px">${svi('edit',15)}</button>
+      <button class="abtn abtn-danger abtn-sm abtn-icon" onclick="delNews(${n.id})" style="margin-left:4px">${svi('trash',15)}</button>
     </td>
   </tr>`).join('');
 }
@@ -2025,11 +2038,10 @@ function openNewsModal(n=null){
   document.getElementById('n-url').value=n?n.url:'';
   N_IMGDATA='';
   var ni=document.getElementById('n-img');
-  if(n&&n.img&&n.img.indexOf('data:')===0){N_IMGDATA=n.img;ni.value='';ni.placeholder='✔ Fotoğraf var — değiştirmek için seçin/yazın';}
+  if(n&&n.img&&n.img.indexOf('data:')===0){N_IMGDATA=n.img;ni.value='';ni.placeholder='Fotoğraf var — değiştirmek için seçin/yazın';}
   else{ni.value=n&&n.img?n.img:'';ni.placeholder='https://... yapıştırın veya →';}
   document.getElementById('n-color').value=n?n.c:'nc1';
-  document.getElementById('n-emoji').value=n?n.e:'📰';
-  document.getElementById('emoji-grid').innerHTML=EMOJIS.map(em=>`<button type="button" class="emoji-opt${(n?n.e:'')==em?' sel':''}" onclick="selEmoji('${em}',this)">${em}</button>`).join('');
+  document.getElementById('n-emoji').value=(n&&n.e)?n.e:'news';
   document.getElementById('news-modal').classList.add('open');
   setTimeout(()=>document.getElementById('n-title').focus(),100);
 }
@@ -2090,9 +2102,9 @@ function saveSocial(){
 function aRenderExport(){
   const N=NEWS(),C=CONTACT();
   document.getElementById('data-sum').innerHTML=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
-    <div style="background:var(--bg);border-radius:8px;padding:14px"><div style="font-size:1.4rem;font-weight:900">${N.length}</div><div style="font-size:.72rem;color:var(--mid);margin-top:2px">📰 Haber</div></div>
-    <div style="background:var(--bg);border-radius:8px;padding:14px"><div style="font-size:.85rem;font-weight:700">${C.tel1||'—'}</div><div style="font-size:.72rem;color:var(--mid);margin-top:2px">📞 Telefon</div></div>
-    <div style="background:var(--bg);border-radius:8px;padding:14px"><div style="font-size:.8rem;font-weight:700">${C.email||'—'}</div><div style="font-size:.72rem;color:var(--mid);margin-top:2px">✉️ E-posta</div></div>
+    <div style="background:var(--bg);border-radius:8px;padding:14px"><div style="font-size:1.4rem;font-weight:900">${N.length}</div><div style="font-size:.72rem;color:var(--mid);margin-top:4px;display:flex;align-items:center;justify-content:center;gap:4px">${svi('news',13)} Haber</div></div>
+    <div style="background:var(--bg);border-radius:8px;padding:14px"><div style="font-size:.85rem;font-weight:700">${C.tel1||'—'}</div><div style="font-size:.72rem;color:var(--mid);margin-top:4px;display:flex;align-items:center;justify-content:center;gap:4px">${svi('phone',13)} Telefon</div></div>
+    <div style="background:var(--bg);border-radius:8px;padding:14px"><div style="font-size:.8rem;font-weight:700">${C.email||'—'}</div><div style="font-size:.72rem;color:var(--mid);margin-top:4px;display:flex;align-items:center;justify-content:center;gap:4px">${svi('mail',13)} E-posta</div></div>
   </div><p style="font-size:.75rem;color:var(--mid);margin-top:10px">Son düzenleme: ${new Date().toLocaleString('tr-TR')}</p>`;
 }
 function exportData(){
@@ -2188,7 +2200,7 @@ function aRenderGallery(){
       ? '<img src="'+g.img+'" style="width:52px;height:38px;object-fit:cover;border-radius:6px" onerror="this.outerHTML=\'<span style=&quot;font-size:1.4rem&quot;>'+(g.e||'📸')+'</span>\'"/>'
       : '<span style="font-size:1.4rem">'+(g.e||'📸')+'</span>';
     return '<tr><td>'+thumb+'</td><td class="td-title">'+g.cap+'</td><td class="td-date">'+(g.date||'')+'</td>'
-      + '<td><button class="abtn abtn-danger abtn-sm abtn-icon" onclick="delGalleryItem('+g.id+')">🗑️</button></td></tr>';
+      + '<td><button class="abtn abtn-danger abtn-sm abtn-icon" onclick="delGalleryItem('+g.id+')">'+svi('trash',15)+'</button></td></tr>';
   }).join('') || '<tr><td colspan="4" style="text-align:center;color:var(--mid);padding:24px">Henüz fotoğraf yok</td></tr>';
 }
 function addGalleryItem(){
@@ -2495,7 +2507,25 @@ const ICONS = {
   flag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" fill="#E30A17" stroke="none"/><circle cx="10.4" cy="12" r="4.6" fill="#fff" stroke="none"/><circle cx="11.6" cy="12" r="3.7" fill="#E30A17" stroke="none"/><path fill="#fff" stroke="none" d="M18.2 12l-2.9.95.02-3.05-1.82 2.46-1.79-2.48-.03 3.05-2.88-1 2.9.97-.02 3.05 1.82-2.46 1.79 2.48.03-3.05z"/></svg>',
   news:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13v14H4z"/><path d="M17 8h3v11a2 2 0 01-2 2H6"/><path d="M7 9h7M7 13h7M7 17h4"/></svg>',
   doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h6"/></svg>',
-  phone:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>'
+  phone:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>',
+  chart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.4" y="3.4" width="7" height="7" rx="1.5"/><rect x="13.6" y="3.4" width="7" height="7" rx="1.5"/><rect x="3.4" y="13.6" width="7" height="7" rx="1.5"/><rect x="13.6" y="13.6" width="7" height="7" rx="1.5"/></svg>',
+  save:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h10.5L20 8v11.5a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 014 19.5V5A1.5 1.5 0 015.5 3.5z"/><path d="M8 3.5v5h7v-5M8 14h8v5.5H8z"/></svg>',
+  link:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.8 14.2l4.4-4.4"/><path d="M8.3 10.6l-2 2a3.3 3.3 0 004.7 4.7l2-2"/><path d="M15.7 13.4l2-2a3.3 3.3 0 00-4.7-4.7l-2 2"/></svg>',
+  eye:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.6 12 5.6 21.5 12 21.5 12 18 18.4 12 18.4 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+  bulb:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M8.4 14a5.5 5.5 0 117.2 0c-.9.8-1.6 1.6-1.6 2.5h-4c0-.9-.7-1.7-1.6-2.5z"/></svg>',
+  download:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11M8 10.5l4 4 4-4M5 20h14"/></svg>',
+  upload:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M8 7.5l4-4 4 4M5 20h14"/></svg>',
+  folder:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7a2 2 0 012-2h3.8l2 2.4h7.2a2 2 0 012 2V18a2 2 0 01-2 2H5.5a2 2 0 01-2-2z"/></svg>',
+  edit:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 3.5l4 4L8 20l-4.5 1 1-4.5z"/><path d="M14 6l4 4"/></svg>',
+  trash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5.2A1.5 1.5 0 0110.5 3.7h3A1.5 1.5 0 0115 5.2V7M6.5 7l1 12.3a1.5 1.5 0 001.5 1.4h6a1.5 1.5 0 001.5-1.4L18 7"/><path d="M10 11v6M14 11v6"/></svg>',
+  plug:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2.5v4M15 2.5v4M6.5 6.5h11v3.2a5.5 5.5 0 01-11 0zM12 15.2V21"/></svg>',
+  factory:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 21h19M4 21V11l5 3.3V11l5 3.3V11l5 3.3V21"/><path d="M4 11l.5-5h2.2l.5 5"/></svg>',
+  star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.8L12 17l-5.2 2.75 1-5.8-4.2-4.1 5.8-.85z"/></svg>',
+  ig:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>',
+  fb:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>',
+  xcom:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5 11-11"/></svg>',
+  cross:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
 };
 SPAGES.home = function(){
   const N = NEWS();
@@ -2749,7 +2779,7 @@ function onNewsFile(inp){
   compressImageFile(inp.files&&inp.files[0], 1000, .74, function(uri){
     N_IMGDATA=uri;
     var t=document.getElementById('n-img');
-    if(t){t.value='';t.placeholder='🆕 Fotoğraf seçildi ✓ — Kaydet\'e basın';}
+    if(t){t.value='';t.placeholder='Fotoğraf seçildi ✓ — Kaydet\'e basın';}
     toast('Fotoğraf hazır — Kaydet\'e basın');
   });
   inp.value='';
@@ -2758,7 +2788,7 @@ function onGalFile(inp){
   compressImageFile(inp.files&&inp.files[0], 1100, .74, function(uri){
     G_IMGDATA=uri;
     var t=document.getElementById('g-img');
-    if(t){t.value='';t.placeholder='🆕 Fotoğraf seçildi ✓ — Galeriye Ekle\'ye basın';}
+    if(t){t.value='';t.placeholder='Fotoğraf seçildi ✓ — Galeriye Ekle\'ye basın';}
     toast('Fotoğraf hazır — Galeriye Ekle\'ye basın');
   });
   inp.value='';
@@ -2779,7 +2809,7 @@ function onKadroFile(inp){
   compressImageFile(inp.files&&inp.files[0], 700, .76, function(uri){
     KADRO_NEW[tid]=uri;
     var row=document.querySelector('[data-tid="'+tid+'"][data-f="img"]');
-    if(row){row.value='';row.placeholder='🆕 Yeni fotoğraf seçildi — Tümünü Kaydet\'e basın';}
+    if(row){row.value='';row.placeholder='Yeni fotoğraf seçildi — Tümünü Kaydet\'e basın';}
     toast('Fotoğraf hazır — Tümünü Kaydet\'e basın');
   });
   inp.value='';
@@ -2828,23 +2858,23 @@ function testGh(){
   toast('Test ediliyor...');
   fetch('https://api.github.com/repos/'+g.u+'/'+g.r,{headers:ghHeaders(g)})
     .then(function(r){
-      if(r.status===200){toast('✅ Bağlantı başarılı! Kaydetmeyi unutmayın.');}
-      else if(r.status===401){toast('❌ Anahtar geçersiz (401)','err');}
-      else if(r.status===404){toast('❌ Depo bulunamadı — ad/kullanıcıyı kontrol edin (404)','err');}
-      else{toast('❌ Hata: '+r.status,'err');}
+      if(r.status===200){toast('Bağlantı başarılı! Kaydetmeyi unutmayın.');}
+      else if(r.status===401){toast('Anahtar geçersiz (401)','err');}
+      else if(r.status===404){toast('Depo bulunamadı — ad/kullanıcıyı kontrol edin (404)','err');}
+      else{toast('Hata: '+r.status,'err');}
     })
-    .catch(function(){toast('❌ İnternet bağlantısı yok','err');});
+    .catch(function(){toast('İnternet bağlantısı yok','err');});
 }
 function publishLive(){
   const g=ghCfg();
   if(!g.u||!g.r||!g.t){
-    toast('Önce Ayarlar → 🌍 Canlı Yayın Bağlantısı bölümünü doldurun','err');
+    toast('Önce Ayarlar → Canlı Yayın Bağlantısı bölümünü doldurun','err');
     aGo('ayarlar',null);
     setTimeout(aLoadGh,50);
     return;
   }
   if(typeof fetch==='undefined'){toast('Bu ortamda yayınlanamıyor','err');return;}
-  toast('🌍 Yayınlanıyor, lütfen bekleyin...');
+  toast('Yayınlanıyor, lütfen bekleyin...');
   const body=JSON.stringify(collectLiveData(),null,1);
   // 1) mevcut sha (varsa)
   fetch(ghApi(g)+'?ref='+g.b,{headers:ghHeaders(g)})
@@ -2855,13 +2885,13 @@ function publishLive(){
       return fetch(ghApi(g),{method:'PUT',headers:Object.assign({'Content-Type':'application/json'},ghHeaders(g)),body:JSON.stringify(payload)});
     })
     .then(function(r){
-      if(r.status===200||r.status===201){toast('🎉 YAYINLANDI! 1-2 dakika içinde tüm ziyaretçiler görecek.');}
-      else if(r.status===401){toast('❌ Anahtar geçersiz — Ayarlar\'dan yenileyin','err');}
-      else if(r.status===404){toast('❌ Depo bulunamadı veya anahtarın yetkisi yok','err');}
-      else if(r.status===409){toast('⚠ Çakışma oldu — bir kez daha Yayınla\'ya basın','err');}
-      else{toast('❌ Yayınlanamadı: '+r.status,'err');}
+      if(r.status===200||r.status===201){toast('YAYINLANDI! 1-2 dakika içinde tüm ziyaretçiler görecek.');}
+      else if(r.status===401){toast('Anahtar geçersiz — Ayarlar\'dan yenileyin','err');}
+      else if(r.status===404){toast('Depo bulunamadı veya anahtarın yetkisi yok','err');}
+      else if(r.status===409){toast('Çakışma oldu — bir kez daha Yayınla\'ya basın','err');}
+      else{toast('Yayınlanamadı: '+r.status,'err');}
     })
-    .catch(function(){toast('❌ İnternet yok veya bağlantı engellendi','err');});
+    .catch(function(){toast('İnternet yok veya bağlantı engellendi','err');});
 }
 // ── Site açılışında canlı veriyi çek ──
 // ── Canlı veri göçü: eski yayınlanmış veri.json'u belleğe alırken güncelle ──
@@ -2906,7 +2936,7 @@ var _al=document.getElementById('a-logo'); if(_al) _al.src=LOGOIMG;
 var _ml=document.getElementById('mnav-logo'); if(_ml) _ml.src=LOGOIMG;
 var _ll=document.getElementById('login-logo-img'); if(_ll) _ll.src=LOGOIMG;
 try{document.documentElement.style.fontSize='';LS.removeItem('dg_fs');}catch(e){}
-try{console.log('%cDok Gemi-İş · Sürüm 2.7','color:#C72119;font-weight:bold');}catch(e){}
+try{console.log('%cDok Gemi-İş · Sürüm 2.8','color:#C72119;font-weight:bold');}catch(e){}
 function openHaber(id, push){
   var N=NEWS(), n=null;
   for(var i=0;i<N.length;i++){ if(String(N[i].id)===String(id)){ n=N[i]; break; } }
@@ -2951,11 +2981,20 @@ window.addEventListener('popstate', function(){
   var m=(location.search||'').match(/[?&]h=(\d+)/);
   if(m){ openHaber(m[1], false); } else { var ov=document.getElementById('haber-ov'); if(ov&&ov.classList.contains('open')){ ov.classList.remove('open'); try{document.body.style.overflow='';}catch(e){} } }
 });
+function aPaintIcons(){
+  try{
+    document.querySelectorAll('[data-i]').forEach(function(el){
+      var k=el.getAttribute('data-i'), s=parseInt(el.getAttribute('data-s'),10)||16;
+      if(k && ICONS[k]!==undefined){ el.innerHTML=svi(k,s); }
+    });
+  }catch(e){}
+}
 function boot(){
   if(location.hash==='#admin'){ showLogin(); } else { showSite(); }
   initExtras();
   updateWhatsApp();
   checkHaberLink();
+  aPaintIcons();
 }
 loadLive(boot);
 </script>
