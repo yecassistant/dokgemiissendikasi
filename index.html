@@ -15,7 +15,7 @@
 <meta property="og:title" content="Türkiye Liman, Dok Gemi – İş Sendikası | Sizin Sendikanız"/>
 <meta property="og:description" content="1946'dan beri emeğin yanında. e-Devlet ile 1 dakikada üye olun. 49+ işyerinde TİS güvencesi. Türk-İş ve IndustriALL Global Union üyesi."/>
 <meta property="og:url" content="https://dokgemiissendikasi.com/"/>
-<meta property="og:image" content="https://dokgemiissendikasi.com/wp-content/uploads/2020/03/Dok-Gemi-Is-Sendikasi-Logo.png"/>
+<meta property="og:image" content="https://dokgemiissendikasi.com/logo512.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@gemiissendika"/>
 <meta name="twitter:title" content="Türkiye Liman, Dok Gemi – İş Sendikası"/>
@@ -995,8 +995,8 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
         </ul></div>
         <div class="fcol"><h5>İçerikler</h5><ul>
           <li><a href="#" onclick="return sGo('haberler')">Haberler</a></li>
-          <li><a href="https://dokgemiissendikasi.com/kategori/faaliyetler/" target="_blank">Faaliyetler</a></li>
-          <li><a href="https://dokgemiissendikasi.com/kategori/egitimler/" target="_blank">Eğitimler</a></li>
+          <li><a href="#" onclick="return sGo('haberler')">Faaliyetler</a></li>
+          <li><a href="#" onclick="return sGo('haberler')">Eğitimler</a></li>
           <li><a href="#" onclick="return sGo('galeri')">Galeri</a></li>
         </ul></div>
         <div class="fcol"><h5>İletişim</h5><ul>
@@ -1030,7 +1030,7 @@ header.hdr-float{box-shadow:0 6px 24px rgba(11,22,40,.12)}
     <div class="login-err" id="login-err">Şifre hatalı. Lütfen tekrar deneyin.</div>
     <button class="pw-reset" onclick="resetPw()">Şifremi unuttum — varsayılana sıfırla</button>
     <button class="back-btn" onclick="showSite()" style="display:block;margin:10px auto 0">← Siteye Dön</button>
-    <div class="login-ver">Sürüm 2.5 · Ağustos 2026</div>
+    <div class="login-ver">Sürüm 2.6 · Ağustos 2026</div>
   </div>
 </div>
 
@@ -1748,7 +1748,7 @@ const SPAGES = {
     const N=NEWS();
     return `<div class="page-hero"><div class="page-hero-inner"><div class="sec-label">Güncel</div><h1>Haberler & Duyurular</h1></div></div>
     <div class="spage"><div class="wrap"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px">${N.map(nc).join('')}</div>
-    <div style="text-align:center;margin-top:44px"><a class="btn btn-outline" href="https://dokgemiissendikasi.com/kategori/haberler/" target="_blank">Daha Fazla Haber →</a></div>
+    <div style="text-align:center;margin-top:44px"><a class="btn btn-outline" href="#" onclick="return sGo('haberler')">Daha Fazla Haber →</a></div>
     </div></div>`;
   },
   hakkimizda(){
@@ -1776,7 +1776,7 @@ const SPAGES = {
       </div>
       <div style="margin-top:44px;padding:26px 28px;background:var(--bg);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
         <div><div class="sec-label">Şubelerimiz</div><p style="font-size:.88rem;color:var(--mid);margin-top:5px">Bölge temsilciliklerimiz hakkında güncel bilgiye ulaşın.</p></div>
-        <a class="btn btn-red" href="https://dokgemiissendikasi.com/yonetim-kadromuz/" target="_blank">Tüm Kadroyu Gör</a>
+        <a class="btn btn-red" href="#" onclick="return sGo('yonetim')">Tüm Kadroyu Gör</a>
       </div>
     </div></div>`;
   },
@@ -2549,7 +2549,7 @@ SPAGES.haberler = function(){
     + (list.length
         ? '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px">'+list.map(nc).join('')+'</div>'
         : '<div style="text-align:center;padding:48px;color:var(--mid)">Bu dönemde haber bulunamadı.</div>')
-    + '<div style="text-align:center;margin-top:44px"><a class="btn btn-outline" href="https://dokgemiissendikasi.com/kategori/haberler/" target="_blank">Arşivdeki Tüm Haberler →</a></div>'
+    + '<div style="text-align:center;margin-top:44px"><a class="btn btn-outline" href="#" onclick="return sGo(&#39;haberler&#39;)">Arşivdeki Tüm Haberler →</a></div>'
     + '</div></div>';
 };
 function setHabFilter(f){
@@ -2854,7 +2854,7 @@ var _al=document.getElementById('a-logo'); if(_al) _al.src=LOGOIMG;
 var _ml=document.getElementById('mnav-logo'); if(_ml) _ml.src=LOGOIMG;
 var _ll=document.getElementById('login-logo-img'); if(_ll) _ll.src=LOGOIMG;
 try{document.documentElement.style.fontSize='';LS.removeItem('dg_fs');}catch(e){}
-try{console.log('%cDok Gemi-İş · Sürüm 2.5','color:#C72119;font-weight:bold');}catch(e){}
+try{console.log('%cDok Gemi-İş · Sürüm 2.6','color:#C72119;font-weight:bold');}catch(e){}
 function boot(){
   if(location.hash==='#admin'){ showLogin(); } else { showSite(); }
   initExtras();
