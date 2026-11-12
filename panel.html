@@ -290,6 +290,7 @@ header{transition:transform .3s cubic-bezier(.4,.2,.2,1),box-shadow .3s}
 
 .tis-ini{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:6px;color:#fff;font-size:.58rem;font-weight:900;text-align:center;line-height:1}
 
+.pw-warn{background:#FEF3C7;border:1px solid #F59E0B;color:#92400E;border-radius:8px;padding:10px 12px;font-size:.8rem;line-height:1.5;margin:0 0 14px}
 </style>
 </head>
 <body>
@@ -305,14 +306,14 @@ header{transition:transform .3s cubic-bezier(.4,.2,.2,1),box-shadow .3s}
     </form>
     <form id="setup-form" onsubmit="return doSetup(event)">
       <input type="password" id="su-token" placeholder="GitHub erişim anahtarı" autocomplete="off" spellcheck="false"/>
-      <input type="password" id="su-pw" placeholder="Yeni panel şifresi (en az 8 karakter)" autocomplete="new-password"/>
+      <input type="password" id="su-pw" placeholder="Yeni panel şifresi (en az 14 karakter)" autocomplete="new-password"/>
       <input type="password" id="su-pw2" placeholder="Panel şifresi (tekrar)" autocomplete="new-password"/>
       <button class="login-btn" id="setup-go" type="submit">Doğrula ve Kur</button>
     </form>
     <div class="login-err" id="login-err"></div>
     <button class="pw-reset" id="login-forget" type="button" onclick="forgetDevice()">Şifremi unuttum</button>
     <button class="back-btn" type="button" onclick="location.href='./'" style="display:block;margin:10px auto 0">← Siteye Dön</button>
-    <div class="login-ver">Sürüm 3.4 · Kasım 2026</div>
+    <div class="login-ver">Sürüm 3.5 · Kasım 2026</div>
   </div>
 </div>
 
@@ -496,8 +497,9 @@ header{transition:transform .3s cubic-bezier(.4,.2,.2,1),box-shadow .3s}
         <div id="ap-ayarlar" class="a-page">
           <div class="a-card" style="max-width:440px"><div class="a-card-head"><h3><i class="ai" data-i="lock" data-s="17"></i> Panel Şifresi</h3></div>
           <div style="padding:20px">
+            <p id="pw-warn" class="pw-warn" style="display:none">Panel şifreniz en az 14 karakter olmalı. Devam etmeden önce lütfen yeni bir şifre belirleyin.</p>
             <div class="afg"><label>Mevcut Şifre</label><input type="password" id="pw-old" autocomplete="current-password"/></div>
-            <div class="afg"><label>Yeni Şifre</label><input type="password" id="pw-new" autocomplete="new-password"/></div>
+            <div class="afg"><label>Yeni Şifre</label><input type="password" id="pw-new" autocomplete="new-password" placeholder="En az 14 karakter"/></div>
             <div class="afg"><label>Yeni Şifre (Tekrar)</label><input type="password" id="pw-new2" autocomplete="new-password"/></div>
             <button class="abtn abtn-primary" onclick="changePw()">Güncelle</button>
           </div></div>
@@ -715,6 +717,7 @@ function showAdmin(){
 }
 
 const GH_REPO={u:'yecassistant',r:'dokgemiissendikasi',b:'main'};
+const MIN_PW=14;
 const AUTH=(function(){
   const VAULT='dg_vault',LOCK='dg_lock',ROUNDS=600000,IDLE_MS=30*60*1000;
   const TOKEN_RE=/^[\x21-\x7E]{20,300}$/;
@@ -818,7 +821,7 @@ const AUTH=(function(){
     setup:async function(token,pw){
       token=String(token||'').trim()||legacy();
       if(!TOKEN_RE.test(token))return 'format';
-      if(String(pw||'').length<8)return 'error';
+      if(String(pw||'').length<MIN_PW)return 'error';
       const state=await check(token);
       if(state!=='ok')return state;
       await seal(pw,token);
@@ -837,7 +840,7 @@ const AUTH=(function(){
       return 'ok';
     },
     rekey:async function(oldPw,newPw){
-      if(String(newPw||'').length<8)return 'error';
+      if(String(newPw||'').length<MIN_PW)return 'error';
       let token;
       try{token=await unlock(oldPw);}catch(e){return e.message;}
       await seal(newPw,token);
@@ -870,7 +873,7 @@ const SETUP_ERR={
   error:'Doğrulama tamamlanamadı. Biraz sonra tekrar deneyin.'
 };
 function pwIssue(pw){
-  if(pw.length<8)return 'Şifre en az 8 karakter olmalı.';
+  if(pw.length<MIN_PW)return 'Şifre en az '+MIN_PW+' karakter olmalı.';
   if(/^(.)\1+$/.test(pw)||/^(?:12345678|123456789|1234567890|password|qwerty123|sifre123)$/i.test(pw)||(/dok\s*gemi/i.test(pw)&&/1946/.test(pw)))return 'Bu şifre kolay tahmin edilir, başka bir şifre seçin.';
   return '';
 }
@@ -906,7 +909,7 @@ function doLogin(ev){
   loginBusy(true);loginMsg('Doğrulanıyor…',true);
   AUTH.login(pw).then(function(state){
     loginBusy(false);inp.value='';
-    if(state==='ok'){enterPanel();return;}
+    if(state==='ok'){enterPanel('',pw.length<MIN_PW);return;}
     if(state==='revoked'||state==='novault'){
       renderLogin();
       if(state==='revoked')loginMsg('GitHub anahtarı artık geçerli değil. Yeni anahtarla yeniden kurun.');
@@ -931,12 +934,16 @@ function doSetup(ev){
   }).catch(function(){loginBusy(false);loginMsg(SETUP_ERR.error);});
   return false;
 }
-function enterPanel(note){
+function enterPanel(note,weak){
   loginBusy(true);loginMsg('Güncel veriler yükleniyor…',true);
   (liveSettled||Promise.resolve()).then(function(){
     loginBusy(false);loginMsg('');
     showAdmin();
     if(note)toast(note);
+    if(weak){
+      aGo('ayarlar',document.querySelector('.a-nav-item[onclick*="\'ayarlar\'"]'));
+      document.getElementById('pw-warn').style.display='block';
+    }
   });
 }
 function clearSecrets(){
@@ -1631,6 +1638,7 @@ function changePw(){
     if(state==='locked'){toast(lockedMsg(),'err');return;}
     if(state!=='ok'){toast('Mevcut şifre hatalı','err');return;}
     cur.value=nw.value=nw2.value='';
+    document.getElementById('pw-warn').style.display='none';
     toast('Panel şifresi güncellendi');
   }).catch(function(){toast('Şifre güncellenemedi','err');});
 }
