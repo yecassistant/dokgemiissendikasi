@@ -165,6 +165,8 @@ nav{max-width:1260px;margin:0 auto;height:var(--navh);display:flex;align-items:c
 .tl-dot{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
 .tl-dot::before{content:'';width:8px;height:8px;background:var(--red);border-radius:50%;display:block}
 
+.tis-vitrin{margin:0 0 36px;border-radius:14px;overflow:hidden;background:#2B3245;aspect-ratio:5/3;border:1px solid var(--border);box-shadow:0 12px 32px rgba(11,22,40,.10)}
+.tis-vitrin video,.tis-vitrin img{display:block;width:100%;height:100%;object-fit:cover}
 .tis-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:13px}
 .tis-card{border:1px solid var(--border);border-radius:11px;padding:16px 18px;display:flex;align-items:center;gap:12px;background:var(--white);transition:transform .15s,box-shadow .15s,border-color .15s}
 .tis-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.07);border-color:var(--ink)}
@@ -427,6 +429,7 @@ tr:hover td{background:#fafbfc}
   .gal-cap{padding:11px 12px}
   .gal-cap .t{font-size:.74rem}
   .tis-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .tis-vitrin{margin-bottom:24px;border-radius:10px}
   .tis-card{padding:11px 12px;gap:9px}
   .tis-ico{width:34px;height:34px}
   .tis-logo{width:76px;height:34px}
@@ -1241,6 +1244,7 @@ const SPAGES = {
     return `<div class="page-hero"><div class="page-hero-inner"><div class="sec-label">Kapsama Alanı</div><h1>Toplu İş Sözleşmelerimiz</h1></div></div>
     <div class="spage"><div class="wrap">
       <p class="sec-lead" style="margin-bottom:36px">Türkiye'nin önde gelen tersane, liman ve denizcilik firmalarında çalışanlar sendikamız güvencesindedir.</p>
+      <div class="tis-vitrin"><video muted loop playsinline preload="metadata" poster="tis-vitrin.jpg" aria-label="Toplu iş sözleşmesi imzaladığımız işyerlerinin logoları"><source src="tis-vitrin.mp4" type="video/mp4"><img src="tis-vitrin.jpg" alt="Toplu iş sözleşmesi imzaladığımız işyerlerinin logoları"></video></div>
       <div class="tis-grid">${TIS().map(tisCo).join('')}</div>
       <div style="margin-top:40px;padding:26px 28px;background:var(--bg);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
         <div><div class="sec-label">İşyeriniz listede yok mu?</div><p style="font-size:.88rem;color:var(--mid);margin-top:4px">Sendikamıza katılarak işyerinizde örgütlenme sürecini başlatabiliriz.</p></div>
@@ -1758,7 +1762,20 @@ function updateWhatsApp(){
   var mw=document.getElementById('mcta-wa');
   if(mw){ if(num){mw.href='https://wa.me/'+num;mw.style.display='flex';} else {mw.style.display='none';} }
 }
+function initVitrin(){
+  const v=document.querySelector('#sapp .tis-vitrin video');
+  if(!v)return;
+  v.muted=true;
+  const still=(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)||(navigator.connection&&navigator.connection.saveData);
+  if(still){v.preload='none';return;}
+  const run=function(){const p=v.play();if(p&&p.catch)p.catch(function(){});};
+  if(typeof IntersectionObserver==='undefined'){run();return;}
+  new IntersectionObserver(function(es){
+    es.forEach(function(en){if(en.isIntersecting)run();else v.pause();});
+  },{threshold:.15}).observe(v);
+}
 function revealInit(){
+  initVitrin();
   try{
     var els=document.querySelectorAll('#sapp .section, #sapp .pres-msg');
     if(typeof IntersectionObserver==='undefined'){for(var i=0;i<els.length;i++){els[i].classList.add('in');}return;}
